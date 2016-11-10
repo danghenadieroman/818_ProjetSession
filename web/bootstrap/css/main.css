@@ -1,0 +1,43 @@
+
+/* 
+    Created on : 10-Sep-2016, 3:08:53 AM
+    Author     : Dan-Ghenadie Roman
+*/
+.img-thumbnail{
+    margin: 5px 0px 5px 0px;
+
+}
+.pagination-centered{
+    text-align:center;
+}
+
+.customLogo{
+    border-color: red;
+}
+
+.customImgPetit{
+    max-width: 150px;
+}
+
+.footer{
+    margin: 0px 0px 100px 0px;
+}
+.customNav{
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: large;
+    border-color: red;
+    border-style: solid;
+    background-color: silver;
+    min-height: 50px;
+}
+.customSearch{
+    margin: 10px 0px 10px 0px;
+
+}
+
+customDiv{
+    margin-top: 100px;
+    background-color: red;
+}
