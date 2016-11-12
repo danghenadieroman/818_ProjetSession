@@ -1,18 +1,13 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Placement animeaux </title>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bootstrap -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="bootstrap/css/main.css" rel="stylesheet" type="text/css"/>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-
-
+        <%@include file="WEB-INF/jspf/bootstrap.jspf" %>
     </head>
     <body>
         <div class="container">
@@ -20,106 +15,18 @@
             <!--Premier row: Les deux div principaux: gauche et droite  -->
             <div class="row">
                 <div class="col-sm-3">
-
                     <!--Contenue de gauche de la page: logo et rechercher  -->
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <a href="index.html"><img src="images/main/logo4.jpg" alt="logo" class="img-responsive"/></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 well">
-                            <form>
-                                <div class=" form-group">
-                                    <label>Type annonce</label>
-                                    <select class="form-control">
-                                        <option>Adopter</option>
-                                        <option>Donner</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Type animal</label>
-                                    <select class="form-control">
-                                        <option>Chien</option>
-                                        <option>Chat</option>
-                                        <option>Peroqet</option>
-                                        <option>Poisson</option>
-                                        <option>Hammster</option>
-                                        <option>Serpent</option>
-
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-default">Rechercher</button>
-
-                            </form>
-                        </div>
-                    </div>
+                    <%@include file="WEB-INF/jspf/logo.jspf" %>
+                    <%@include file="WEB-INF/jspf/chercher.jspf" %>
                 </div>
 
                 <!--Contenue droite de la page-->
                 <div class="col-sm-9">
                     <div class="row">
                         <!--menu de navigation-->
-                        <div class="col-sm-12">
-                            <nav class="navbar navbar-default ">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle" data-target="#mainNavbar" data-toggle="collapse">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
-                                <div class="navbar-collapse collapse" id="mainNavbar">
-                                    <ul class="nav navbar-nav nav-divider">
-                                        <li>
-                                            <a href="#"><span class="glyphicon glyphicon-home"></span>
-                                                Principale</a>
-                                        </li>
-
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                <span class="glyphicon glyphicon-blackboard"></span>
-                                                Annonces
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a href="annonce_publier.html">Publier </a>
-                                                </li>
-                                                <li>
-                                                    <a href="annonce_afficher.html">Afficher</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                <span class="glyphicon glyphicon-user"></span>
-                                                Compte
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a href="compte_creer.html">Créer un compte </a>
-                                                </li>
-                                                <li>
-                                                    <a href="compte_connexion.html">Connexion</a>
-                                                </li>
-                                                <li>
-                                                    <a href="compte_profile.html">Mon profile</a>
-                                                </li>                                                
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <form class="navbar-form navbar-right" role="search" action="rechercher.html">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Chercher"/>
-                                        </div>
-                                        <button type="submit" class="btn btn-default" ><span class="glyphicon glyphicon-search"></span></button>
-                                    </form>
-                                </div>
-                            </nav>
-                        </div>
-
-
+                        <%@include file="WEB-INF/jspf/entete.jspf" %>
+                        <!--contenue de la page-->
+                        
                         <div class="col-sm-12">
                             <div class="row"><!--Contenue ads-->
                                 <div class="col-sm-12">
@@ -153,7 +60,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
-                                   <div class="row">
+                                    <div class="row">
                                         <div class="col-sm-4">
                                             <a href="#">
                                                 <img src="images/gallery/dogs/dog01.jpg" class="img-responsive img-thumbnail" alt="chat"/>
@@ -228,9 +135,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </div><!--fin contenue de la page-->
+                    </div><!-- Fin deuxieme row: contenue droite de la page  -->
+                </div><!--Fin contenue droite de la page-->
             </div><!-- Fin premier row: contenue de gauche et droite de la page  -->
 
             <!-- 2 row: pagination  -->
@@ -255,20 +162,7 @@
                 </div>
             </div>
             <!-- 3 row: Contenue de bas de la page  -->
-            <div class="row">
-                <div class="container footer">
-                    <div class="col-sm-12">
-                        <hr/>
-                        <ul class="nav nav-pills navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-map-marker"></span> Adresse</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-earphone"></span> Contacts</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Clavardage</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-
+            <%@include file="WEB-INF/jspf/bas.jspf" %>
         </div><!-- Fin Container principale -->
     </body>
 </html>

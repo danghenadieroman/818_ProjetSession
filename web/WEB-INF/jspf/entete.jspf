@@ -1,0 +1,96 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+<div class="col-sm-12">
+    <%-- ResourceBundle --%>
+    <fmt:setLocale value="${sessionScope.langue}"/>
+    <fmt:setBundle basename="ressources_i18n.Messages"/>
+    <%--  --%>
+    <nav class="navbar navbar-default ">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-target="#mainNavbar" data-toggle="collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="mainNavbar">
+
+            <ul class="nav navbar-nav nav-divider">
+                <li>
+                    <a href="index.jsp"><span class="glyphicon glyphicon-home"></span>
+                        <fmt:message key="message.principale"/>
+                    </a>
+                </li>
+
+                <li class="dropdown">
+
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-blackboard"></span>
+                        <fmt:message key="message.annonces"/>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="annonce_publier.jsp">
+                                <fmt:message key="message.publier"/> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="annonce_afficher.jsp">
+                                <fmt:message key="message.afficher"/>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <fmt:message key="message.compte"/>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="compte_creer.jsp">
+                                <fmt:message key="message.creerCompte"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="compte_connexion.jsp">
+                                <fmt:message key="message.connexion"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="compte_profile.jsp">
+                                <fmt:message key="message.monProfile"/>
+                            </a>
+                        </li>                                                
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right" action="ControleurLangue">
+                <c:choose> 
+                    <c:when test="${sessionScope.langue != 'en_US'}">
+                        <button type="submit" class="btn btn-default" name="langue" value="anglais">
+                            <fmt:message key="message.anglais"/>
+                        </button>
+                    </c:when>
+                    <c:otherwise>
+                        <button type="submit" class="btn btn-default" name="langue" value="francais">
+                            <fmt:message key="message.francais"/>
+                        </button>
+                    </c:otherwise>
+                </c:choose>
+            </form>
+
+            <form class="navbar-form navbar-right" role="search" action="rechercher.jsp">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder='<fmt:message key="message.chercher"/>'/>
+                </div>
+                <button type="submit" class="btn btn-default" ><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+
+
+
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,22 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="row">
+    <fmt:setLocale value="${sessionScope.langue}"/>
+    <fmt:setBundle basename="ressources_i18n.Messages"/>
+    <div class="container footer">
+        <div class="col-sm-12">
+            <hr/>
+            <ul class="nav nav-pills navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-map-marker"></span> 
+                        <fmt:message key="message.adresse"/>
+                    </a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-earphone"></span> 
+                        <fmt:message key="message.contacts"/>
+                    </a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> 
+                        <fmt:message key="message.clavardage"/>
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+</div>

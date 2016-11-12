@@ -1,0 +1,49 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+<div class="row">
+    <%-- ResourceBundle --%>
+    <fmt:setLocale value="${sessionScope.langue}"/>
+    <fmt:setBundle basename="ressources_i18n.Messages"/>
+    <%--  --%>
+    <div class="col-sm-12 well">
+        <form>
+            <div class=" form-group">
+                <label><fmt:message key="message.typeAnnonce"/></label>
+                <div class="radio">
+                    <label><input type="radio" name="radioTypeAnnonce">
+                        <fmt:message key="message.adopter"/>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="radioTypeAnnonce">
+                        <fmt:message key="message.donner"/>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label><fmt:message key="message.typeAnimal"/></label>
+
+                <div class="radio">
+                    <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.chien"/></label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.chat"/></label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.poisson"/></label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.peroquet"/></label>
+                </div><div class="radio">
+                    <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.hammster"/></label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.serpent"/></label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default"><fmt:message key="message.chercher"/></button>
+
+        </form>
+    </div>
+</div>
