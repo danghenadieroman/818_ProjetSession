@@ -4,7 +4,7 @@ import java.util.ListResourceBundle;
 
 /**
  *
- * @author 1395945
+ * @author Dan-Ghenadie Roman
  */
 public class Messages extends ListResourceBundle {
 

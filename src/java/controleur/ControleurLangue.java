@@ -1,7 +1,6 @@
 package controleur;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Irina Meghi-Roman
+ * @author Dan-Ghenadie Roman
  */
 public class ControleurLangue extends HttpServlet {
 
@@ -34,7 +33,7 @@ public class ControleurLangue extends HttpServlet {
         String langue = request.getParameter("langue");
         System.out.println("langue: " + langue);
 
-        if (langue.equals("anglais")) {
+        if (request.getParameter("langue").equals("anglais")) {
             session.setAttribute("langue", "en_US");
         } else {
             session.setAttribute("langue", "fr_CA");
