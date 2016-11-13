@@ -1,7 +1,7 @@
 <%-- author: Dan-Ghenadie Roman --%>
 
-
 <%@ page pageEncoding="UTF-8" %>
+<%@ page errorPage="WEB-INF/pageErreur.jsp" %>
 
 <div class="col-sm-12">
     <%-- ResourceBundle --%>
@@ -20,14 +20,11 @@
 
             <ul class="nav navbar-nav nav-divider">
                 <li>
-                    <a href="index.jsp"><span class="glyphicon glyphicon-home"></span>
+                    <a href="ControleurIndex"><span class="glyphicon glyphicon-home"></span>
                         <fmt:message key="message.principale"/>
                     </a>
                 </li>
-
                 <li class="dropdown">
-
-
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-blackboard"></span>
                         <fmt:message key="message.annonces"/>
@@ -83,16 +80,12 @@
                     </c:otherwise>
                 </c:choose>
             </form>
-
             <form class="navbar-form navbar-right" role="search" action="rechercher.jsp">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder='<fmt:message key="message.chercher"/>'/>
                 </div>
                 <button type="submit" class="btn btn-default" ><span class="glyphicon glyphicon-search"></span></button>
             </form>
-
-
-
         </div>
     </nav>
 </div>

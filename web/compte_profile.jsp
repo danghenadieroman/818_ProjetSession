@@ -13,6 +13,10 @@
     </head>
     <body>
         <div class="container">
+            <%-- ResourceBundle --%>
+            <fmt:setLocale value="${sessionScope.langue}"/>
+            <fmt:setBundle basename="ressources_i18n.Messages"/>
+            <%--  --%>
 
             <!--Premier row: Les deux div principaux: gauche et droite  -->
             <div class="row">
@@ -40,10 +44,6 @@
                                         <div class="col-md-12">
                                             <form>
                                                 <div class="form-group">
-                                                    <label for="login">Login</label>
-                                                    <input type="text" class="form-control" id="login">
-                                                </div>                                                
-                                                <div class="form-group">
                                                     <label for="nom">Nom</label>
                                                     <input type="text" class="form-control" id="nom">
                                                 </div>
@@ -60,13 +60,17 @@
                                                     <input type="text" class="form-control" id="zipcode">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="tel">TÃ©lÃ©phone</label>
+                                                    <label for="tel">Téléphone</label>
                                                     <input type="text" class="form-control" id="tel">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Photo</label>
                                                     <button type="submit" class="btn btn-default">Choisissez une photo</button>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="login">Nom utilisateur</label>
+                                                    <input type="text" class="form-control" id="login">
+                                                </div>  
                                                 <div class="form-group">
                                                     <label for="pwd">Mot de passe</label>
                                                     <input type="text" class="form-control" id="pwd">
@@ -75,8 +79,9 @@
                                                     <label for="reppwd">Confirmer mot de passe</label>
                                                     <input type="text" class="form-control" id="reppwd">
                                                 </div>
-
-                                                <button type="submit" class="btn btn-default">Sauvegarder</button>
+                                                <button type="submit" class="btn btn-default">
+                                                    <fmt:message key="message.sauvegarder"/>
+                                                </button>
                                             </form>
                                         </div>
 

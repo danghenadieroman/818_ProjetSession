@@ -3,6 +3,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <div class="row">
     <div class="col-sm-12">
-        <a href="index.jsp"><img src="images/main/logo4.jpg" alt="logo" class="img-responsive"/></a>
+        <a href="ControleurIndex"><img src="images/main/logo4.jpg" alt="logo" class="img-responsive"/></a>
     </div>
 </div>

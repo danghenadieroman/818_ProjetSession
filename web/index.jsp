@@ -13,7 +13,6 @@
     </head>
     <body>
         <div class="container">
-
             <!--Premier row: Les deux div principaux: gauche et droite  -->
             <div class="row">
                 <div class="col-sm-3">
@@ -21,119 +20,28 @@
                     <%@include file="WEB-INF/jspf/logo.jspf" %>
                     <%@include file="WEB-INF/jspf/chercher.jspf" %>
                 </div>
-
                 <!--Contenue droite de la page-->
                 <div class="col-sm-9">
                     <div class="row">
                         <!--menu de navigation-->
                         <%@include file="WEB-INF/jspf/entete.jspf" %>
                         <!--contenue de la page-->
-                        
                         <div class="col-sm-12">
                             <div class="row"><!--Contenue ads-->
                                 <div class="col-sm-12">
                                     <div class="row">
-                                        <div class="col-sm-4">
-                                            <a href="#">
-                                                <img src="images/gallery/cats/cat02.jpg" class="img-responsive img-thumbnail" alt="chat"/>
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <h4>Chat, bell chat<small><i> 09 Septembre 2016</i></small></h4>
-                                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. 
-                                            </p>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <a href="#">
-                                                <img src="images/gallery/cats/cat01.jpg" class="img-responsive img-thumbnail" alt="chat"/>
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <h4>Chat, bell chat<small><i> 09 Septembre 2016</i></small></h4>
-                                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. 
-                                            </p>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <a href="#">
-                                                <img src="images/gallery/dogs/dog01.jpg" class="img-responsive img-thumbnail" alt="chat"/>
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <h4>Chat, bell chat<small><i> 09 Septembre 2016</i></small></h4>
-                                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. 
-                                            </p>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <a href="#">
-                                                <img src="images/gallery/fish/f1.jpg" class="img-responsive img-thumbnail" alt="chat"/>
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <h4>Chat, bell chat<small><i> 09 Septembre 2016</i></small></h4>
-                                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. 
-                                            </p>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <a href="#">
-                                                <img src="images/gallery/hamsters/h01.jpg" class="img-responsive img-thumbnail" alt="chat"/>
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <h4>Chat, bell chat<small><i> 09 Septembre 2016</i></small></h4>
-                                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. 
-                                            </p>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <a href="#">
-                                                <img src="images/gallery/piroquet/p1.jpg" class="img-responsive img-thumbnail" alt="chat"/>
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <h4>Chat, bell chat<small><i> 09 Septembre 2016</i></small></h4>
-                                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. 
-                                            </p>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <a href="#">
-                                                <img src="images/gallery/dogs/dog02.jpg" class="img-responsive img-thumbnail" alt="chat"/>
-                                            </a>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <h4>Chat, bell chat<small><i> 09 Septembre 2016</i></small></h4>
-                                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. 
-                                            </p>
-                                            <hr>
-                                        </div>
+                                        <c:forEach var="annonce" items="${catalogue}">
+                                            <div class="col-sm-4">
+                                                <a href="#">
+                                                    <img src="${annonce.image}" class="img-responsive img-thumbnail" alt="chat"/>
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <h4>${annonce.nom}<small><i> ${annonce.date}</i></small></h4>
+                                                <p class="text-justify">${annonce.details}</p>
+                                                <hr>
+                                            </div>
+                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>
