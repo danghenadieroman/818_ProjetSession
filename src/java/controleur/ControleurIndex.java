@@ -1,7 +1,6 @@
 package controleur;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,9 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import modele.Annonce;
-import modele.RegistreAnnonces;
+import modele.JDBCAnnonceDAO;
 
 /**
  *
@@ -34,9 +32,35 @@ public class ControleurIndex extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String destination = "index.jsp";
-        List catalogue = creerListeAnnonces();
+//        List catalogue = creerListeAnnonces();
+        List catalogue = null;
 
-        request.setAttribute("catalogue", catalogue);
+        Annonce annonce = new Annonce();
+        annonce.setNom("Test insert nom 3");
+        annonce.setDate(new Date());
+        annonce.setDetails("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc");
+        annonce.setImage("images/gallery/cats/cat01.jpg");
+
+        JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
+
+        jdbcAnnonceDAO.getConnection();
+
+//        jdbcAnnonceDAO.insert(annonce);
+        
+        catalogue = jdbcAnnonceDAO.select();
+        jdbcAnnonceDAO.closeConnection();
+
+        if (catalogue != null) {
+            request.setAttribute("catalogue", catalogue);
+        } else {
+            annonce = new Annonce();
+            annonce.setNom("Aucun annonce");
+            annonce.setDate(new Date());
+            annonce.setDetails("");
+            annonce.setImage("");
+            catalogue.add(annonce);
+            request.setAttribute("catalogue", catalogue);
+        }
 
         dispatch(destination, request, response);
 
@@ -56,14 +80,14 @@ public class ControleurIndex extends HttpServlet {
         List registre = new ArrayList();
 
         Annonce annonce = new Annonce();
-        annonce.setNom("Chat");
+        annonce.setNom("Chat1");
         annonce.setDate(new Date());
         annonce.setDetails("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc");
         annonce.setImage("images/gallery/cats/cat02.jpg");
         registre.add(annonce);
 
         annonce = new Annonce();
-        annonce.setNom("Chat");
+        annonce.setNom("Chat2");
         annonce.setDate(new Date());
         annonce.setDetails("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc");
         annonce.setImage("images/gallery/cats/cat01.jpg");

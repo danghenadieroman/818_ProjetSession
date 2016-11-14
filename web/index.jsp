@@ -21,30 +21,32 @@
                     <%@include file="WEB-INF/jspf/chercher.jspf" %>
                 </div>
                 <!--Contenue droite de la page-->
-                <div class="col-sm-9">
-                    <div class="row">
+                <div class="col-sm-9 ">
+                    <div class="row ">
                         <!--menu de navigation-->
                         <%@include file="WEB-INF/jspf/entete.jspf" %>
                         <!--contenue de la page-->
-                        <div class="col-sm-12">
-                            <div class="row"><!--Contenue ads-->
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <c:forEach var="annonce" items="${catalogue}">
-                                            <div class="col-sm-4">
-                                                <a href="#">
-                                                    <img src="${annonce.image}" class="img-responsive img-thumbnail" alt="chat"/>
-                                                </a>
-                                            </div>
-                                            <div class="col-sm-8">
+                        <div class="col-sm-12 ">
+                            <!--contenue annonce individuel-->
+                            <c:forEach var="annonce" items="${catalogue}">
+                                <div class="row "><!--Contenue ads-->
+                                    <div class="col-sm-4 " >
+                                        <a href="#">
+                                            <img src="${annonce.image}" class="img-responsive img-thumbnail" alt="chat"/>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="row ">
+                                            <div class="col-sm-12 ">
                                                 <h4>${annonce.nom}<small><i> ${annonce.date}</i></small></h4>
-                                                <p class="text-justify">${annonce.details}</p>
-                                                <hr>
                                             </div>
-                                        </c:forEach>
+                                            <div class="col-sm-12">
+                                                <p class="text-justify">${annonce.details}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </c:forEach><!--fin contenue annonce individuel-->
                         </div><!--fin contenue de la page-->
                     </div><!-- Fin deuxieme row: contenue droite de la page  -->
                 </div><!--Fin contenue droite de la page-->

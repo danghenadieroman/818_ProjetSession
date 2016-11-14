@@ -9,11 +9,20 @@ import java.util.Date;
  */
 public class Annonce {
     
+    private int id;
     private String nom;
     private Date date;
     private String details;
     private String image;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNom() {
         return nom;
     }
@@ -48,7 +57,7 @@ public class Annonce {
 
     @Override
     public String toString() {
-        return "Annonce{" + "nom=" + nom + ", date=" + date + ", details=" + details + ", image=" + image + '}';
+        return "Annonce{" + "id=" + id + ", nom=" + nom + ", date=" + date + ", details=" + details + ", image=" + image + '}';
     }
-    
+
 }
