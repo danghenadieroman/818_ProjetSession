@@ -1,11 +1,12 @@
-<%-- any content can be specified here e.g.: --%>
+<%-- author: Dan-Ghenadie Roman --%>
+
 <%@ page pageEncoding="UTF-8" %>
 <div class="col-sm-12">
     <div class="row"><!--Contenue ads-->
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
-            <div class="h3">Recherche annonce</div>
+            <div class="h3"><fmt:message key="message.rechercheDetaile"/></div>
             <div class="row">
                 <div class="col-md-12">
                     <hr>

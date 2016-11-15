@@ -25,6 +25,7 @@ public class Messages_fr_CA extends ListResourceBundle {
         {"message.chercher", "Chercher"},
         {"message.francais", "Français"},
         {"message.anglais", "Anglais"},
+        {"message.rechercheDetaile", "Recherche détailée"},
         {"message.publierVotreAnnonce", "Publier votre annonce"},
         {"message.adopter", "Adopter"},
         {"message.donner", "Donner"},
