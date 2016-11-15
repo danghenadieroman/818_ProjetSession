@@ -1,4 +1,3 @@
-
 package modele;
 
 import java.util.Date;
@@ -8,9 +7,12 @@ import java.util.Date;
  * @author Dan-Ghenadie Roman
  */
 public class Annonce {
-    
+
     private int id;
-    private String nom;
+    private String typeAnnonce;
+    private String typeAnimal;
+    private String sex;
+    private int age;
     private Date date;
     private String details;
     private String image;
@@ -22,13 +24,37 @@ public class Annonce {
     public void setId(int id) {
         this.id = id;
     }
-    
-    public String getNom() {
-        return nom;
+
+    public String getTypeAnnonce() {
+        return typeAnnonce;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setTypeAnnonce(String typeAnnonce) {
+        this.typeAnnonce = typeAnnonce;
+    }
+
+    public String getTypeAnimal() {
+        return typeAnimal;
+    }
+
+    public void setTypeAnimal(String typeAnimal) {
+        this.typeAnimal = typeAnimal;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Date getDate() {
@@ -57,7 +83,8 @@ public class Annonce {
 
     @Override
     public String toString() {
-        return "Annonce{" + "id=" + id + ", nom=" + nom + ", date=" + date + ", details=" + details + ", image=" + image + '}';
+        return "Annonce{" + "id=" + id + ", typeAnnonce=" + typeAnnonce + ", typeAnimal=" + typeAnimal + ", sex=" + sex + ", age=" + age + ", date=" + date + ", details=" + details + ", image=" + image + '}';
     }
-
+    
+    
 }

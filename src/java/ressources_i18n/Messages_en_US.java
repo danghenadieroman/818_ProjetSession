@@ -27,6 +27,7 @@ public class Messages_en_US extends ListResourceBundle {
         {"message.anglais", "English"},
         {"message.rechercheDetaile", "Advanced search"},
         {"message.publierVotreAnnonce", "Publishing your announce"},
+        {"message.mesAnnonces", "My announces"},
         {"message.typeAnnonce", "Type of annonce"},
         {"message.adopter", "Adopte"},
         {"message.donner", "Donate"},

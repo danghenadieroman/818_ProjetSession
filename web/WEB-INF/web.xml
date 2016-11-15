@@ -12,6 +12,10 @@
         <servlet-name>ControleurIndex</servlet-name>
         <servlet-class>controleur.ControleurIndex</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControlleurPublier</servlet-name>
+        <servlet-class>controleur.ControlleurPublier</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControleurCompteProfile</servlet-name>
         <url-pattern>/ControleurCompteProfile</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ControleurIndex</servlet-name>
         <url-pattern>/ControleurIndex</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlleurPublier</servlet-name>
+        <url-pattern>/ControlleurPublier</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

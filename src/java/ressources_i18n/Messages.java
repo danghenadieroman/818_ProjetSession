@@ -27,6 +27,7 @@ public class Messages extends ListResourceBundle {
         {"message.anglais", "Anglais"},
         {"message.rechercheDetaile", "Recherche détailée"},
         {"message.publierVotreAnnonce", "Publier votre annonce"},
+        {"message.mesAnnonces", "Mes annonces"},
         {"message.typeAnnonce", "Type annonce"},
         {"message.adopter", "Adopter"},
         {"message.donner", "Donner"},

@@ -37,8 +37,8 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
     public void insert(Annonce annonce) {
         try {
             PreparedStatement preparedStatement
-                    = connection.prepareStatement("INSERT INTO annonces (id, nom, dateAnnonce, details, image) VALUES (seqAnnonces.nextval , ?, ?, ?, ?)");
-            preparedStatement.setString(1, annonce.getNom());
+                    = connection.prepareStatement("INSERT INTO annonces (id, typeAnnonce, dateAnnonce, details, image) VALUES (seqAnnonces.nextval , ?, ?, ?, ?)");
+            preparedStatement.setString(1, annonce.getTypeAnnonce());
             preparedStatement.setDate(2, new Date(0));
             preparedStatement.setString(3, annonce.getDetails());
             preparedStatement.setString(4, annonce.getImage());
@@ -64,7 +64,7 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
             while (resultSet.next()) {
                 annonce = new Annonce();
                 annonce.setId(Integer.parseInt(resultSet.getString("id")));
-                annonce.setNom(resultSet.getString("nom"));
+                annonce.setTypeAnnonce(resultSet.getString("typeAnnonce"));
                 annonce.setDate(resultSet.getDate("dateAnnonce"));
                 annonce.setDetails(resultSet.getString("details"));
                 annonce.setImage(resultSet.getString("image"));

@@ -31,7 +31,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="annonce_publier.jsp">
+                            <a href="ControlleurPublier">
                                 <fmt:message key="message.publier"/> 
                             </a>
                         </li>
