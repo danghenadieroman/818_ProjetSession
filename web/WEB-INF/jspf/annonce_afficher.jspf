@@ -2,9 +2,10 @@
 
 <%@ page pageEncoding="UTF-8" %>
 <div class="col-sm-12">
+    <div class="h3"><fmt:message key="message.mesAnnonces"/></div>
+    <hr>
     <div class="row"><!--Contenue-->
         <div class="col-md-12">
-            <div class="h3"><fmt:message key="message.mesAnnonces"/></div>
             <div class="row">
                 <div class="col-md-1">
                     <div class="checkbox">

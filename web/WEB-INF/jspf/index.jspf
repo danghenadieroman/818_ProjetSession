@@ -1,25 +1,38 @@
 <%-- author: Dan-Ghenadie Roman --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" %>
 <div class="col-sm-12 ">
     <!--contenue annonce individuel-->
-    <c:forEach var="annonce" items="${catalogue}">
-        <div class="row "><!--Contenue ads-->
-            <div class="col-sm-4 " >
-                <a href="#">
-                    <img src="${annonce.image}" class="img-responsive img-thumbnail" alt="chat"/>
-                </a>
-            </div>
-            <div class="col-sm-8">
-                <div class="row ">
-                    <div class="col-sm-12 ">
-                        <h4>${annonce.nom}<small><i> ${annonce.date}</i></small></h4>
+    <c:choose>
+        <c:when test='${catalogue != null}'>
+            <c:forEach var="annonce" items="${catalogue}">
+                <div class="row "><!--Contenue ads-->
+                    <div class="col-sm-4 " >
+                        <a href="#">
+                            <img src="${annonce.image}" class="img-responsive img-thumbnail" alt="image"/>
+                        </a>
                     </div>
-                    <div class="col-sm-12">
-                        <p class="text-justify">${annonce.details}</p>
+                    <div class="col-sm-8">
+                        <div class="row ">
+                            <div class="col-sm-12 ">
+                                <h5>Type annonce: ${annonce.typeAnnonce} <br>
+                                    Type animal: ${annonce.typeAnimal} <br>
+                                    Sex: ${annonce.sex} <br>
+                                    Age: ${annonce.age} 
+                                </h5>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="text-justify">${annonce.details}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </c:forEach><!--fin contenue annonce individuel-->
+            </c:forEach><!--fin contenue annonce individuel-->
+        </c:when>    
+        <c:otherwise>
+            <h1 class="h1">Le catalogue est vide</h1>
+            <br />
+        </c:otherwise>
+    </c:choose>
 </div><!--fin contenue de la page-->

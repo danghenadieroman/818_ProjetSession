@@ -37,11 +37,15 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
     public void insert(Annonce annonce) {
         try {
             PreparedStatement preparedStatement
-                    = connection.prepareStatement("INSERT INTO annonces (id, typeAnnonce, dateAnnonce, details, image) VALUES (seqAnnonces.nextval , ?, ?, ?, ?)");
+                    = connection.prepareStatement("INSERT INTO annonces (id, typeAnnonce, typeAnimal, sex, age, dateAnnonce, details, image) "
+                            + "VALUES (seqAnnonces.nextval , ?, ?, ?, ?, ?, ?, ?)");
             preparedStatement.setString(1, annonce.getTypeAnnonce());
-            preparedStatement.setDate(2, new Date(0));
-            preparedStatement.setString(3, annonce.getDetails());
-            preparedStatement.setString(4, annonce.getImage());
+            preparedStatement.setString(2, annonce.getTypeAnimal());
+            preparedStatement.setString(3, annonce.getSex());
+            preparedStatement.setInt(4, annonce.getAge());
+            preparedStatement.setDate(5, new Date(2016, 11, 15));
+            preparedStatement.setString(6, annonce.getDetails());
+            preparedStatement.setString(7, annonce.getImage());
 
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -65,6 +69,9 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
                 annonce = new Annonce();
                 annonce.setId(Integer.parseInt(resultSet.getString("id")));
                 annonce.setTypeAnnonce(resultSet.getString("typeAnnonce"));
+                annonce.setTypeAnimal(resultSet.getString("typeAnimal"));
+                annonce.setSex(resultSet.getString("sex"));
+                annonce.setAge(resultSet.getInt("age"));
                 annonce.setDate(resultSet.getDate("dateAnnonce"));
                 annonce.setDetails(resultSet.getString("details"));
                 annonce.setImage(resultSet.getString("image"));

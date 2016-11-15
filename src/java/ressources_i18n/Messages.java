@@ -45,6 +45,7 @@ public class Messages extends ListResourceBundle {
         {"message.a", "à"},
         {"message.age", "Age"},
         {"message.photo", "Photo"},
+        {"message.image", "Image"},
         {"message.choisissezUnePhoto", "Choisissez une photo"},
         {"message.detailAnnonce", "Détails annonce"},
         {"message.adresse", "Adresse"},

@@ -31,20 +31,40 @@ public class ControlleurPublier extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String destination = "annonce_publier.jsp";
-        List catalogue = null;
-        Annonce annonce = new Annonce();
+        String destination = "index.jsp";
         JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
         jdbcAnnonceDAO.getConnection();
 
-        
-        jdbcAnnonceDAO.insert(annonce);
+        if (request.getParameter("submit") != null) {
 
-        catalogue = jdbcAnnonceDAO.select();
+            Annonce annonce = new Annonce();
+            annonce.setTypeAnnonce(request.getParameter("radioTypeAnnonce"));
+            annonce.setTypeAnimal(request.getParameter("radioTypeAnimal"));
+            annonce.setSex(request.getParameter("radioSex"));
+            annonce.setAge(Integer.parseInt(request.getParameter("age")));
+            annonce.setDate(new Date());//a faire
+            annonce.setDetails(request.getParameter("details"));
+            annonce.setImage(request.getParameter("image"));
+
+            destination = "index.jsp";
+
+            jdbcAnnonceDAO.insert(annonce);
+
+            //il faut remplir catalogue pour pouvoir afficher le catalogue dans index.jsp
+            //sinon il va montrer liste vide
+            List catalogue = jdbcAnnonceDAO.select();
+            if (catalogue != null) {
+                request.setAttribute("catalogue", catalogue);
+            } else {
+                request.setAttribute("catalogue", null);
+            }
+
+        } else {
+            destination = "annonce_publier.jsp";
+        }
+
         jdbcAnnonceDAO.closeConnection();
-
         dispatch(destination, request, response);
-
     }
 
     protected void dispatch(String destination, HttpServletRequest request, HttpServletResponse response)

@@ -32,19 +32,9 @@ public class ControleurIndex extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String destination = "index.jsp";
-//        List catalogue = creerListeAnnonces();
         List catalogue = null;
-
-        Annonce annonce = new Annonce();
-        annonce.setDate(new Date());
-        annonce.setDetails("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc");
-        annonce.setImage("images/gallery/cats/cat01.jpg");
-
         JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
-
         jdbcAnnonceDAO.getConnection();
-
-//        jdbcAnnonceDAO.insert(annonce);
         
         catalogue = jdbcAnnonceDAO.select();
         jdbcAnnonceDAO.closeConnection();
@@ -52,12 +42,7 @@ public class ControleurIndex extends HttpServlet {
         if (catalogue != null) {
             request.setAttribute("catalogue", catalogue);
         } else {
-            annonce = new Annonce();
-            annonce.setDate(new Date());
-            annonce.setDetails("");
-            annonce.setImage("");
-            catalogue.add(annonce);
-            request.setAttribute("catalogue", catalogue);
+            request.setAttribute("catalogue", null);
         }
 
         dispatch(destination, request, response);
@@ -73,37 +58,6 @@ public class ControleurIndex extends HttpServlet {
         }
     }
 
-    protected List creerListeAnnonces() {
-
-        List registre = new ArrayList();
-
-        Annonce annonce = new Annonce();
-        annonce.setDate(new Date());
-        annonce.setDetails("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc");
-        annonce.setImage("images/gallery/cats/cat02.jpg");
-        registre.add(annonce);
-
-        annonce = new Annonce();
-        annonce.setDate(new Date());
-        annonce.setDetails("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc");
-        annonce.setImage("images/gallery/cats/cat01.jpg");
-        registre.add(annonce);
-
-        annonce = new Annonce();
-        annonce.setDate(new Date());
-        annonce.setDetails("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc");
-        annonce.setImage("images/gallery/dogs/dog01.jpg");
-        registre.add(annonce);
-
-        annonce = new Annonce();
-        annonce.setDate(new Date());
-        annonce.setDetails("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc");
-        annonce.setImage("images/gallery/fish/f1.jpg");
-        registre.add(annonce);
-
-        return registre;
-
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
