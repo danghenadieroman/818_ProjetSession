@@ -27,7 +27,7 @@ public class ControleurLangue extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String destination = "index.jsp";
+        String destination = "ControleurIndex";
         HttpSession session = request.getSession();
 
         String langue = request.getParameter("langue");

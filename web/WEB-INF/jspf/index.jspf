@@ -10,17 +10,35 @@
                 <div class="row "><!--Contenue ads-->
                     <div class="col-sm-4 " >
                         <a href="#">
-                            <img src="${annonce.image}" class="img-responsive img-thumbnail" alt="image"/>
+                            <img src="images/gallery/dogs/dog08.jpg" class="img-responsive img-thumbnail" alt="image"/>
                         </a>
                     </div>
                     <div class="col-sm-8">
                         <div class="row ">
                             <div class="col-sm-12 ">
-                                <h5>Type annonce: ${annonce.typeAnnonce} <br>
-                                    Type animal: ${annonce.typeAnimal} <br>
-                                    Sex: ${annonce.sex} <br>
-                                    Age: ${annonce.age} 
-                                </h5>
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <td><fmt:message key="message.typeAnnonce"/></td>
+                                        <td>${annonce.typeAnnonce}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><fmt:message key="message.typeAnimal"/></td>
+                                        <td>${annonce.typeAnimal}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><fmt:message key="message.sex"/></td>
+                                        <td>${annonce.sex}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><fmt:message key="message.age"/></td>
+                                        <td>${annonce.age} </td>
+                                    </tr>
+                                    <tr>
+                                        <td><fmt:message key="message.date"/></td>
+                                        <td> </td>
+                                    </tr>
+                                </table>
+
                             </div>
                             <div class="col-sm-12">
                                 <p class="text-justify">${annonce.details}</p>
