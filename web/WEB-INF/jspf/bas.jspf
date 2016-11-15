@@ -1,6 +1,5 @@
 <%-- author: Dan-Ghenadie Roman --%>
 
-
 <%@ page pageEncoding="UTF-8" %>
 <div class="row">
     <%-- ResourceBundle --%>
