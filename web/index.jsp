@@ -25,54 +25,13 @@
                     <div class="row ">
                         <!--menu de navigation-->
                         <%@include file="WEB-INF/jspf/entete.jspf" %>
-                        <!--contenue de la page-->
-                        <div class="col-sm-12 ">
-                            <!--contenue annonce individuel-->
-                            <c:forEach var="annonce" items="${catalogue}">
-                                <div class="row "><!--Contenue ads-->
-                                    <div class="col-sm-4 " >
-                                        <a href="#">
-                                            <img src="${annonce.image}" class="img-responsive img-thumbnail" alt="chat"/>
-                                        </a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="row ">
-                                            <div class="col-sm-12 ">
-                                                <h4>${annonce.nom}<small><i> ${annonce.date}</i></small></h4>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <p class="text-justify">${annonce.details}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach><!--fin contenue annonce individuel-->
-                        </div><!--fin contenue de la page-->
+                        <!--contenue de la page: le catalogue des annonces-->
+                        <%@include file="WEB-INF/jspf/index.jspf" %>
                     </div><!-- Fin deuxieme row: contenue droite de la page  -->
                 </div><!--Fin contenue droite de la page-->
             </div><!-- Fin premier row: contenue de gauche et droite de la page  -->
-
             <!-- 2 row: pagination  -->
-            <div class="row">
-                <div class="col-sm-9 col-sm-offset-3">
-                    <div class="text-center">
-                        <ul class="pagination">
-                            <li><a href="#">&laquo;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li class="active"><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">6</a></li>
-                            <li><a href="#">7</a></li>
-                            <li><a href="#">8</a></li>
-                            <li><a href="#">9</a></li>
-                            <li><a href="#">&raquo;</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <%@include file="WEB-INF/jspf/pagination.jspf" %>
             <!-- 3 row: Contenue de bas de la page  -->
             <%@include file="WEB-INF/jspf/bas.jspf" %>
         </div><!-- Fin Container principale -->

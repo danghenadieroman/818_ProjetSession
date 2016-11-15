@@ -1,0 +1,24 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="col-sm-12 ">
+    <!--contenue annonce individuel-->
+    <c:forEach var="annonce" items="${catalogue}">
+        <div class="row "><!--Contenue ads-->
+            <div class="col-sm-4 " >
+                <a href="#">
+                    <img src="${annonce.image}" class="img-responsive img-thumbnail" alt="chat"/>
+                </a>
+            </div>
+            <div class="col-sm-8">
+                <div class="row ">
+                    <div class="col-sm-12 ">
+                        <h4>${annonce.nom}<small><i> ${annonce.date}</i></small></h4>
+                    </div>
+                    <div class="col-sm-12">
+                        <p class="text-justify">${annonce.details}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </c:forEach><!--fin contenue annonce individuel-->
+</div><!--fin contenue de la page-->
