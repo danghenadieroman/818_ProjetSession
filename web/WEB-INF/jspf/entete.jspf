@@ -80,7 +80,7 @@
                     </c:otherwise>
                 </c:choose>
             </form>
-            <form class="navbar-form navbar-right" role="search" action="rechercher.jsp">
+            <form class="navbar-form navbar-right" role="search" action="chercher.jsp">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder='<fmt:message key="message.chercher"/>'/>
                 </div>
