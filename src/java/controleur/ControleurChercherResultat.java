@@ -45,13 +45,15 @@ public class ControleurChercherResultat extends HttpServlet {
             
             Chercher chercher = new Chercher();
             chercher.setTypeAnnonce(request.getParameter("radioTypeAnnonce"));
+            
             System.out.println("radioTypeAnnonce: " + request.getParameter("radioTypeAnnonce"));
+            
             chercher.setTypeAnimal(request.getParameter("radioTypeAnimal"));
             chercher.setSex(request.getParameter("radioSex"));
             chercher.setAgeMin(Integer.parseInt(request.getParameter("ageMin")));
             chercher.setAgeMax(Integer.parseInt(request.getParameter("ageMax")));
 
-//            System.out.println("objet chercher: " + chercher);
+            System.out.println("objet chercher: " + chercher);
 
             //il faut remplir resutlat recherche pour pouvoir afficher dans resutlat_recherche.jsp
             //sinon il va montrer liste vide
