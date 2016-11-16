@@ -36,7 +36,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="annonce_afficher.jsp">
+                            <a href="ControlleurAfficher">
                                 <fmt:message key="message.afficher"/>
                             </a>
                         </li>
@@ -80,12 +80,21 @@
                     </c:otherwise>
                 </c:choose>
             </form>
-            <form class="navbar-form navbar-right" role="search" action="chercher.jsp">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder='<fmt:message key="message.chercher"/>'/>
-                </div>
-                <button type="submit" class="btn btn-default" ><span class="glyphicon glyphicon-search"></span></button>
+
+
+
+            <form class="navbar-form navbar-right" role="search" action="ControleurIndex">
+                <button type="submit" class="btn btn-default" name="panier" value="entete">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> <fmt:message key="message.panier"/>
+                </button>
             </form>
+                        
+            <form class="navbar-form navbar-right" role="search" action="ControleurChercher">
+                <div class="form-group">
+                </div>
+                <button type="submit" name="chercher" value="entete" class="btn btn-default" ><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+
         </div>
     </nav>
 </div>

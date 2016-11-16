@@ -16,6 +16,18 @@
         <servlet-name>ControlleurPublier</servlet-name>
         <servlet-class>controleur.ControlleurPublier</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControlleurAfficher</servlet-name>
+        <servlet-class>controleur.ControlleurAfficher</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControleurChercher</servlet-name>
+        <servlet-class>controleur.ControleurChercher</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControleurChercherResultat</servlet-name>
+        <servlet-class>controleur.ControleurChercherResultat</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControleurCompteProfile</servlet-name>
         <url-pattern>/ControleurCompteProfile</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>ControlleurPublier</servlet-name>
         <url-pattern>/ControlleurPublier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlleurAfficher</servlet-name>
+        <url-pattern>/ControlleurAfficher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControleurChercher</servlet-name>
+        <url-pattern>/ControleurChercher</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControleurChercherResultat</servlet-name>
+        <url-pattern>/ControleurChercherResultat</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

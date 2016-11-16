@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Placement Animeaux - Connexion compte </title>
+        <title>Placement Animeaux - Recherche annonce </title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <%@include file="WEB-INF/jspf/bootstrap.jspf" %>
@@ -26,17 +26,11 @@
                         <!--menu de navigation-->
                         <%@include file="WEB-INF/jspf/entete.jspf" %>
                         <!--contenue de la page-->
-                        <%@include file="WEB-INF/jspf/compte_connexion.jspf" %>
+                        <%@include file="WEB-INF/jspf/chercher_resultat.jspf" %>
                     </div>
-                </div>
-            </div><!-- Fin premier row: contenue de gauche et droite de la page  -->
-            <!-- 2 row: pagination  -->
-            <div class="row">
-                <div class="col-sm-9 col-sm-offset-3">
-                </div>
-            </div>
-            <!-- 3 row: Contenue de bas de la page  -->
-            <%@include file="WEB-INF/jspf/bas.jspf" %>
-        </div><!-- Fin Container principale -->
+                </div><!-- Fin premier row: contenue de gauche et droite de la page  -->
+                <!-- 3 row: Contenue de bas de la page  -->
+                <%@include file="WEB-INF/jspf/bas.jspf" %>
+            </div><!-- Fin Container principale -->
     </body>
 </html>

@@ -7,11 +7,12 @@
     <c:choose>
         <c:when test='${catalogue != null}'>
             <c:forEach var="annonce" items="${catalogue}">
-                <div class="row "><!--Contenue ads-->
+                <div class="row"><!--Contenue ads-->
                     <div class="col-sm-4 " >
                         <a href="#">
                             <img src="images/gallery/dogs/dog08.jpg" class="img-responsive img-thumbnail" alt="image"/>
                         </a>
+                        <button type="submit" class="btn btn-default btn-block"><fmt:message key="message.ajouterPanier"/></button>
                     </div>
                     <div class="col-sm-8">
                         <div class="row ">
@@ -19,22 +20,22 @@
                                 <table class="table table-responsive">
                                     <tr>
                                         <td><fmt:message key="message.typeAnnonce"/></td>
-                                        <td>${annonce.typeAnnonce}</td>
+                                    <td>${annonce.typeAnnonce}</td>
                                     </tr>
                                     <tr>
                                         <td><fmt:message key="message.typeAnimal"/></td>
-                                        <td>${annonce.typeAnimal}</td>
+                                    <td>${annonce.typeAnimal}</td>
                                     </tr>
                                     <tr>
                                         <td><fmt:message key="message.sex"/></td>
-                                        <td>${annonce.sex}</td>
+                                    <td>${annonce.sex}</td>
                                     </tr>
                                     <tr>
                                         <td><fmt:message key="message.age"/></td>
-                                        <td>${annonce.age} </td>
+                                    <td>${annonce.age} </td>
                                     </tr>
                                     <tr>
-                                        <td><fmt:message key="message.date"/></td>
+                                        <td><%-- <fmt:message key="message.date"/>--%></td>
                                         <td> </td>
                                     </tr>
                                 </table>
@@ -46,10 +47,11 @@
                         </div>
                     </div>
                 </div>
+                <hr>
             </c:forEach><!--fin contenue annonce individuel-->
         </c:when>    
         <c:otherwise>
-            <h1 class="h1">Le catalogue est vide</h1>
+            <h1 class="h1"><fmt:message key="message.catalogueVide"/></h1>
             <br />
         </c:otherwise>
     </c:choose>

@@ -1,22 +1,23 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controleur;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modele.Annonce;
-import modele.JDBCAnnonceDAO;
 
 /**
  *
- * @author Dan-Ghenadie Roman
+ * @author Administrateur
  */
-public class ControleurIndex extends HttpServlet {
+public class ControleurChercherResultat extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,22 +31,21 @@ public class ControleurIndex extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String destination = "index.jsp";
-        List catalogue = null;
-        JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
-        jdbcAnnonceDAO.getConnection();
         
-        catalogue = jdbcAnnonceDAO.select();
-        jdbcAnnonceDAO.closeConnection();
+        String destination;
 
-        if (catalogue != null) {
-            request.setAttribute("catalogue", catalogue);
+        System.out.println("btnChercher" + request.getParameter("btnChercher"));
+        
+        if (request.getParameter("chercher").equals("button")) {
+            
+            destination = "chercher_resultat.jsp";
+            dispatch(destination, request, response);
+
         } else {
-            request.setAttribute("catalogue", null);
-        }
+            destination = "index.jsp";
+            dispatch(destination, request, response);
 
-        dispatch(destination, request, response);
+        }
 
     }
 
@@ -57,7 +57,6 @@ public class ControleurIndex extends HttpServlet {
             rd.forward(request, response);
         }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
