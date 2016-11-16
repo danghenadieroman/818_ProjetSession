@@ -50,7 +50,6 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -102,23 +101,36 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
         List<Annonce> annonces = new LinkedList<Annonce>();
         try {
             System.out.println("select(chercher): " + chercher);
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from annonces w"
-//                    + "here (typeAnnonce = ? and typeAnimal = ? and sex = ? and  age > ? and age < ?)");
-                                + "here (typeAnnonce = ? and typeAnimal = ? and sex = ?)");
-
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from annonces "
+                    + "where (typeAnnonce = ? and typeAnimal = ? and sex = ? and  age >= ? and age <= ?)");
 
             preparedStatement.setString(1, chercher.getTypeAnnonce());
             preparedStatement.setString(2, chercher.getTypeAnimal());
             preparedStatement.setString(3, chercher.getSex());
-//            preparedStatement.setString(4, String.valueOf(chercher.getAgeMin()));
-//            preparedStatement.setString(5, String.valueOf(chercher.getAgeMax()));
+            preparedStatement.setString(4, String.valueOf(chercher.getAgeMin()));
+            preparedStatement.setString(5, String.valueOf(chercher.getAgeMax()));
 
-            preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Annonce annonce = null;
+            while (resultSet.next()) {
+                annonce = new Annonce();
+                annonce.setId(Integer.parseInt(resultSet.getString("id")));
+                annonce.setTypeAnnonce(resultSet.getString("typeAnnonce"));
+                annonce.setTypeAnimal(resultSet.getString("typeAnimal"));
+                annonce.setSex(resultSet.getString("sex"));
+                annonce.setAge(resultSet.getInt("age"));
+                annonce.setDate(resultSet.getDate("dateAnnonce"));
+                annonce.setDetails(resultSet.getString("details"));
+                annonce.setImage(resultSet.getString("image"));
+
+                annonces.add(annonce);
+            }
+            resultSet.close();
             preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("ERREUR: public List<Annonce> select(Chercher chercher)");
-
         }
         return annonces;
     }
