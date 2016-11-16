@@ -28,6 +28,7 @@ public class Messages extends ListResourceBundle {
         {"message.francais", "Français"},
         {"message.anglais", "Anglais"},
         {"message.rechercheDetaile", "Recherche détailée"},
+        {"message.resultatChercher", "Résultat de la recherche"},
         {"message.publierVotreAnnonce", "Publier votre annonce"},
         {"message.mesAnnonces", "Mes annonces"},
         {"message.typeAnnonce", "Type annonce"},

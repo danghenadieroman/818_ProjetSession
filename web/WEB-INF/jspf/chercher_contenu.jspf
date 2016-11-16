@@ -60,12 +60,12 @@
                             <hr>
                             <div class="form-group">
                                 <label><fmt:message key="message.age"/></label>
-                                <input type="number" class="form-control" placeholder="1"/> 
+                                <input type="number" name="ageMin" class="form-control" placeholder="1" required=""/> 
                                 <fmt:message key="message.a"/> 
-                                <input type="number" class="form-control" placeholder="5"/> 
+                                <input type="number" name="ageMax" class="form-control" placeholder="5" required=""/> 
                             </div>
                             <hr>
-                            <button ype="submit" name="chercher" value="button" class="btn btn-default"><fmt:message key="message.chercher"/></button>
+                            <button type="submit" name="chercher" value="button" class="btn btn-default"><fmt:message key="message.chercher"/></button>
                         </div>
                     </form>
                 </div>

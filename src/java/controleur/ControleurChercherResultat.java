@@ -6,12 +6,16 @@
 package controleur;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Date;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modele.Annonce;
+import modele.Chercher;
+import modele.JDBCAnnonceDAO;
 
 /**
  *
@@ -31,21 +35,41 @@ public class ControleurChercherResultat extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String destination;
 
-        System.out.println("btnChercher" + request.getParameter("btnChercher"));
-        
+        String destination;
+        String requete = "";
+        JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
+        jdbcAnnonceDAO.getConnection();
+
         if (request.getParameter("chercher").equals("button")) {
             
+            Chercher chercher = new Chercher();
+            chercher.setTypeAnnonce(request.getParameter("radioTypeAnnonce"));
+            System.out.println("radioTypeAnnonce: " + request.getParameter("radioTypeAnnonce"));
+            chercher.setTypeAnimal(request.getParameter("radioTypeAnimal"));
+            chercher.setSex(request.getParameter("radioSex"));
+            chercher.setAgeMin(Integer.parseInt(request.getParameter("ageMin")));
+            chercher.setAgeMax(Integer.parseInt(request.getParameter("ageMax")));
+
+//            System.out.println("objet chercher: " + chercher);
+
+            //il faut remplir resutlat recherche pour pouvoir afficher dans resutlat_recherche.jsp
+            //sinon il va montrer liste vide
+            List resultatChercher = jdbcAnnonceDAO.select(chercher);
+            if (resultatChercher != null) {
+                request.setAttribute("resultatChercher", resultatChercher);
+            } else {
+                request.setAttribute("resultatChercher", null);
+            }
+            
             destination = "chercher_resultat.jsp";
-            dispatch(destination, request, response);
 
         } else {
-            destination = "index.jsp";
-            dispatch(destination, request, response);
-
+            destination = "chercher.jsp";
         }
+
+        jdbcAnnonceDAO.closeConnection();
+        dispatch(destination, request, response);
 
     }
 

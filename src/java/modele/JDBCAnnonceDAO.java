@@ -96,4 +96,26 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
         } catch (Exception e) {
         }
     }
+
+    @Override
+    public List<Annonce> select(Chercher chercher) {
+        List<Annonce> annonces = new LinkedList<Annonce>();
+        try {
+            System.out.println("objet chercher dans select(): " + chercher);
+            PreparedStatement preparedStatement
+                    = connection.prepareStatement("select * from anonces where (typeAnnonce = ? and typeAnimal = ? and sex = ? and  age > ? and age < ?)");
+            preparedStatement.setString(1, chercher.getTypeAnnonce());
+            preparedStatement.setString(2, chercher.getTypeAnimal());
+            preparedStatement.setString(3, chercher.getSex());
+            preparedStatement.setString(4, String.valueOf(chercher.getAgeMin()));
+            preparedStatement.setString(5, String.valueOf(chercher.getAgeMax()));
+
+            preparedStatement.executeQuery();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return annonces;
+    }
 }

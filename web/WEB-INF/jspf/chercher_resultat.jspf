@@ -1,3 +1,58 @@
-<%-- any content can be specified here e.g.: --%>
+<%-- author: Dan-Ghenadie Roman --%>
+
 <%@ page pageEncoding="UTF-8" %>
-chercher_resultat
+<div class="col-sm-12 ">
+    <!--contenue annonce individuel-->
+    <div class="h1 text-primary"><fmt:message key="message.resultatChercher"/></div>
+    <c:choose>
+        <c:when test='${resultatChercher != null}'>
+            <c:forEach var="chercher" items="${resultatChercher}">
+                <div class="row"><!--Contenue ads-->
+                    <div class="col-sm-4 " >
+                        <a href="#">
+                            <img src="images/gallery/dogs/dog08.jpg" class="img-responsive img-thumbnail" alt="image"/>
+                        </a>
+                        <button type="submit" class="btn btn-default btn-block"><fmt:message key="message.ajouterPanier"/></button>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="row ">
+                            <div class="col-sm-12 ">
+                                <table class="table table-responsive">
+                                    <tr>
+                                        <td><fmt:message key="message.typeAnnonce"/></td>
+                                    <td>${chercher.typeAnnonce}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><fmt:message key="message.typeAnimal"/></td>
+                                    <td>${chercher.typeAnimal}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><fmt:message key="message.sex"/></td>
+                                    <td>${chercher.sex}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><fmt:message key="message.age"/></td>
+                                    <td>${chercher.age} </td>
+                                    </tr>
+                                    <tr>
+                                        <td><%-- <fmt:message key="message.date"/>--%></td>
+                                        <td> </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="text-justify">${chercher.details}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </c:forEach><!--fin contenue annonce individuel-->
+        </c:when>    
+        <c:otherwise>
+            <h1 class="h1"><fmt:message key="message.catalogueVide"/></h1>
+            <br />
+        </c:otherwise>
+    </c:choose>
+</div><!--fin contenue de la page-->
