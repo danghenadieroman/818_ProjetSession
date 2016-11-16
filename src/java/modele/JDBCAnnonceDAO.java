@@ -23,7 +23,9 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
             if (connection == null) {
-                connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL", "scott", "scott");
+//                connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL", "scott", "scott");
+                connection = DriverManager.getConnection("jdbc:oracle:thin:@oracleadudb1.bdeb.qc.ca:1521:GDNA10", "UG200E19", "U927fc");
+
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
