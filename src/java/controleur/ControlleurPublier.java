@@ -1,7 +1,6 @@
 package controleur;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -9,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import modele.Annonce;
 import modele.JDBCAnnonceDAO;
 
@@ -34,7 +34,7 @@ public class ControlleurPublier extends HttpServlet {
         String destination = "index.jsp";
         JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
         jdbcAnnonceDAO.getConnection();
-
+        
         if (request.getParameter("submit") != null) {
 
             Annonce annonce = new Annonce();
@@ -65,6 +65,10 @@ public class ControlleurPublier extends HttpServlet {
 
         jdbcAnnonceDAO.closeConnection();
         dispatch(destination, request, response);
+    }
+
+    protected void insererImage() throws IOException {
+        
     }
 
     protected void dispatch(String destination, HttpServletRequest request, HttpServletResponse response)
@@ -114,5 +118,16 @@ public class ControlleurPublier extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
 
 }

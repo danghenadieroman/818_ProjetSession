@@ -7,11 +7,11 @@
     <fmt:setBundle basename="ressources_i18n.Messages"/>
     <%--  --%>
     <div class="col-sm-12 well">
-        <form>
+        <form action="ControleurChercherResultat"> 
             <div class=" form-group">
                 <label><fmt:message key="message.typeAnnonce"/></label>
                 <div class="radio">
-                    <label><input type="radio" name="radioTypeAnnonce">
+                    <label><input type="radio" name="radioTypeAnnonce" checked="">
                         <fmt:message key="message.adopter"/>
                     </label>
                 </div>
@@ -24,7 +24,7 @@
             <div class="form-group">
                 <label><fmt:message key="message.typeAnimal"/></label>
                 <div class="radio">
-                    <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.chien"/></label>
+                    <label><input type="radio" name="radioTypeAnimal" checked=""><fmt:message key="message.chien"/></label>
                 </div>
                 <div class="radio">
                     <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.chat"/></label>

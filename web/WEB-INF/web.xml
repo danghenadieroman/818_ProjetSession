@@ -28,6 +28,10 @@
         <servlet-name>ControleurChercherResultat</servlet-name>
         <servlet-class>controleur.ControleurChercherResultat</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControleurUploadFile</servlet-name>
+        <servlet-class>controleur.ControleurUploadFile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControleurCompteProfile</servlet-name>
         <url-pattern>/ControleurCompteProfile</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ControleurChercherResultat</servlet-name>
         <url-pattern>/ControleurChercherResultat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControleurUploadFile</servlet-name>
+        <url-pattern>/ControleurUploadFile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
