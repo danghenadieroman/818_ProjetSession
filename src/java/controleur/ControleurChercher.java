@@ -1,22 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controleur;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modele.Annonce;
-import modele.JDBCAnnonceDAO;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Dan-Ghenadie Roman
  */
-public class ControleurIndex extends HttpServlet {
+public class ControleurChercher extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,21 +33,16 @@ public class ControleurIndex extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String destination = "index.jsp";
-        List catalogue = null;
-        JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
-        jdbcAnnonceDAO.getConnection();
+        String destination;
         
-        catalogue = jdbcAnnonceDAO.select();
-        jdbcAnnonceDAO.closeConnection();
+        if (request.getParameter("chercher").equals("entete")) {
+            destination = "chercher.jsp";
+            dispatch(destination, request, response);
 
-        if (catalogue != null) {
-            request.setAttribute("catalogue", catalogue);
         } else {
-            request.setAttribute("catalogue", null);
+            destination = "index.jsp";
+            dispatch(destination, request, response);
         }
-
-        dispatch(destination, request, response);
 
     }
 
@@ -57,7 +54,6 @@ public class ControleurIndex extends HttpServlet {
             rd.forward(request, response);
         }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

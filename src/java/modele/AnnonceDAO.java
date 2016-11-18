@@ -9,6 +9,9 @@ import java.util.List;
 public interface AnnonceDAO {
 
     public void insert(Annonce anonce);
+
     public List<Annonce> select();
+
+    public List<Annonce> select(Chercher chercher);
 
 }

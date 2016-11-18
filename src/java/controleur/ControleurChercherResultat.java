@@ -1,22 +1,20 @@
 package controleur;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modele.Annonce;
+import modele.Chercher;
 import modele.JDBCAnnonceDAO;
 
 /**
  *
  * @author Dan-Ghenadie Roman
  */
-public class ControleurIndex extends HttpServlet {
+public class ControleurChercherResultat extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,20 +29,36 @@ public class ControleurIndex extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String destination = "index.jsp";
-        List catalogue = null;
+        String destination;
         JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
         jdbcAnnonceDAO.getConnection();
-        
-        catalogue = jdbcAnnonceDAO.select();
-        jdbcAnnonceDAO.closeConnection();
 
-        if (catalogue != null) {
-            request.setAttribute("catalogue", catalogue);
+        if (request.getParameter("chercher").equals("button")) {
+
+            Chercher chercher = new Chercher();
+            chercher.setTypeAnnonce(request.getParameter("radioTypeAnnonce"));
+            chercher.setTypeAnimal(request.getParameter("radioTypeAnimal"));
+            chercher.setSex(request.getParameter("radioSex"));
+            chercher.setAgeMin(Integer.parseInt(request.getParameter("ageMin")));
+            chercher.setAgeMax(Integer.parseInt(request.getParameter("ageMax")));
+
+            //il faut remplir resutlat recherche pour pouvoir afficher dans resutlat_recherche.jsp
+            //sinon il va montrer liste vide
+            List resultatChercher = jdbcAnnonceDAO.select(chercher);
+
+            if (resultatChercher != null) {
+                request.setAttribute("resultatChercher", resultatChercher);
+            } else {
+                request.setAttribute("resultatChercher", null);
+            }
+
+            destination = "chercher_resultat.jsp";
+
         } else {
-            request.setAttribute("catalogue", null);
+            destination = "chercher.jsp";
         }
 
+        jdbcAnnonceDAO.closeConnection();
         dispatch(destination, request, response);
 
     }
@@ -57,7 +71,6 @@ public class ControleurIndex extends HttpServlet {
             rd.forward(request, response);
         }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -1,22 +1,20 @@
 package controleur;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modele.Annonce;
 import modele.JDBCAnnonceDAO;
 
 /**
  *
  * @author Dan-Ghenadie Roman
  */
-public class ControleurIndex extends HttpServlet {
+public class ControlleurAfficher extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,7 +29,7 @@ public class ControleurIndex extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String destination = "index.jsp";
+        String destination = "annonce_afficher.jsp";
         List catalogue = null;
         JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
         jdbcAnnonceDAO.getConnection();
@@ -57,7 +55,6 @@ public class ControleurIndex extends HttpServlet {
             rd.forward(request, response);
         }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

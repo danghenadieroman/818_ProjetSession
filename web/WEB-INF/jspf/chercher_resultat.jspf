@@ -1,12 +1,12 @@
 <%-- author: Dan-Ghenadie Roman --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" %>
 <div class="col-sm-12 ">
     <!--contenue annonce individuel-->
+    <div class="h1 text-primary"><fmt:message key="message.resultatChercher"/></div>
     <c:choose>
-        <c:when test='${catalogue != null}'>
-            <c:forEach var="annonce" items="${catalogue}">
+        <c:when test='${resultatChercher != null}'>
+            <c:forEach var="chercher" items="${resultatChercher}">
                 <div class="row"><!--Contenue ads-->
                     <div class="col-sm-4 " >
                         <a href="#">
@@ -20,19 +20,19 @@
                                 <table class="table table-responsive">
                                     <tr>
                                         <td><fmt:message key="message.typeAnnonce"/></td>
-                                    <td>${annonce.typeAnnonce}</td>
+                                    <td>${chercher.typeAnnonce}</td>
                                     </tr>
                                     <tr>
                                         <td><fmt:message key="message.typeAnimal"/></td>
-                                    <td>${annonce.typeAnimal}</td>
+                                    <td>${chercher.typeAnimal}</td>
                                     </tr>
                                     <tr>
                                         <td><fmt:message key="message.sex"/></td>
-                                    <td>${annonce.sex}</td>
+                                    <td>${chercher.sex}</td>
                                     </tr>
                                     <tr>
                                         <td><fmt:message key="message.age"/></td>
-                                    <td>${annonce.age} </td>
+                                    <td>${chercher.age} </td>
                                     </tr>
                                     <tr>
                                         <td><%-- <fmt:message key="message.date"/>--%></td>
@@ -42,7 +42,7 @@
 
                             </div>
                             <div class="col-sm-12">
-                                <p class="text-justify">${annonce.details}</p>
+                                <p class="text-justify">${chercher.details}</p>
                             </div>
                         </div>
                     </div>

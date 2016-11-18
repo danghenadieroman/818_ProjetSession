@@ -10,16 +10,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <hr>
-                    <form>
+                    <form action="ControleurChercherResultat">
                         <div class=" form-group">
                             <label><fmt:message key="message.typeAnnonce"/></label>
                             <div class="radio">
-                                <label><input type="radio" name="radioTypeAnnonce">
+                                <label><input type="radio" checked="" name="radioTypeAnnonce" value='<fmt:message key="message.adopter"/>'>
                                     <fmt:message key="message.adopter"/>
                                 </label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="radioTypeAnnonce">
+                                <label><input type="radio" name="radioTypeAnnonce" value='<fmt:message key="message.adopter"/>'>
                                     <fmt:message key="message.donner"/>
                                 </label>
                             </div>
@@ -28,44 +28,44 @@
                         <div class="form-group">
                             <label><fmt:message key="message.typeAnimal"/></label>
                             <div class="radio">
-                                <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.chien"/></label>
+                                <label><input type="radio" checked="" name="radioTypeAnimal" value='<fmt:message key="message.chien"/>'><fmt:message key="message.chien"/></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.chat"/></label>
+                                <label><input type="radio" name="radioTypeAnimal" value='<fmt:message key="message.chat"/>'><fmt:message key="message.chat"/></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.poisson"/></label>
+                                <label><input type="radio" name="radioTypeAnimal" value='<fmt:message key="message.poisson"/>'><fmt:message key="message.poisson"/></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.peroquet"/></label>
+                                <label><input type="radio" name="radioTypeAnimal" value='<fmt:message key="message.peroquet"/>'><fmt:message key="message.peroquet"/></label>
                             </div><div class="radio">
-                                <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.hammster"/></label>
+                                <label><input type="radio" name="radioTypeAnimal" value='<fmt:message key="message.hammster"/>'><fmt:message key="message.hammster"/></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.serpent"/></label>
+                                <label><input type="radio" name="radioTypeAnimal" value='<fmt:message key="message.serpent"/>'><fmt:message key="message.serpent"/></label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="radioTypeAnimal"><fmt:message key="message.autre"/></label>
+                                <label><input type="radio" name="radioTypeAnimal" value='<fmt:message key="message.autre"/>'><fmt:message key="message.autre"/></label>
                             </div>
                             <hr>
                             <div class=" form-group">
                                 <label><fmt:message key="message.sex"/></label>
                                 <div class="radio">
-                                    <label><input type="radio" name="radioSex"><fmt:message key="message.masculin"/></label>
+                                    <label><input type="radio" checked="" name="radioSex" value='<fmt:message key="message.masculin"/>'> <fmt:message key="message.masculin"/></label>
                                 </div>
                                 <div class="radio">
-                                    <label><input type="radio" name="radioSex"><fmt:message key="message.feminin"/></label>
+                                    <label><input type="radio" name="radioSex" value='<fmt:message key="message.feminin"/>'><fmt:message key="message.feminin"/></label>
                                 </div>
                             </div>
                             <hr>
                             <div class="form-group">
                                 <label><fmt:message key="message.age"/></label>
-                                <input type="text" class="form-control" placeholder="min"/> 
+                                <input type="number" name="ageMin" class="form-control" placeholder="1" required="" value="1"/> 
                                 <fmt:message key="message.a"/> 
-                                <input type="text" class="form-control" placeholder="max"/>
+                                <input type="number" name="ageMax" class="form-control" placeholder="5" required="" value="5"/> 
                             </div>
                             <hr>
-                            <button type="submit" class="btn btn-default"><fmt:message key="message.chercher"/></button>
+                            <button type="submit" name="chercher" value="button" class="btn btn-default"><fmt:message key="message.chercher"/></button>
                         </div>
                     </form>
                 </div>

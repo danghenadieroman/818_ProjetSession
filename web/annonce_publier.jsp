@@ -18,7 +18,7 @@
                 <div class="col-sm-3">
                     <!--Contenue de gauche de la page: logo et rechercher  -->
                     <%@include file="WEB-INF/jspf/logo.jspf" %>
-                    <%@include file="WEB-INF/jspf/chercher.jspf" %>
+                    <%@include file="WEB-INF/jspf/chercher_gauche.jspf" %>
                 </div>
                 <!--Contenue droite de la page-->
                 <div class="col-sm-9">

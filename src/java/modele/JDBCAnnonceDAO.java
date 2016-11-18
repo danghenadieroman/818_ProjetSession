@@ -23,7 +23,9 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
             if (connection == null) {
-                connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL", "scott", "tiger");
+//                connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL", "scott", "scott");
+                connection = DriverManager.getConnection("jdbc:oracle:thin:@oracleadudb1.bdeb.qc.ca:1521:GDNA10", "UG200E19", "U927fc");
+
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -50,7 +52,6 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -95,5 +96,44 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
             }
         } catch (Exception e) {
         }
+    }
+
+    @Override
+    public List<Annonce> select(Chercher chercher) {
+        List<Annonce> annonces = new LinkedList<Annonce>();
+        try {
+            System.out.println("select(chercher): " + chercher);
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from annonces "
+                    + "where (typeAnnonce = ? and typeAnimal = ? and sex = ? and  age >= ? and age <= ?)");
+
+            preparedStatement.setString(1, chercher.getTypeAnnonce());
+            preparedStatement.setString(2, chercher.getTypeAnimal());
+            preparedStatement.setString(3, chercher.getSex());
+            preparedStatement.setString(4, String.valueOf(chercher.getAgeMin()));
+            preparedStatement.setString(5, String.valueOf(chercher.getAgeMax()));
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Annonce annonce = null;
+            while (resultSet.next()) {
+                annonce = new Annonce();
+                annonce.setId(Integer.parseInt(resultSet.getString("id")));
+                annonce.setTypeAnnonce(resultSet.getString("typeAnnonce"));
+                annonce.setTypeAnimal(resultSet.getString("typeAnimal"));
+                annonce.setSex(resultSet.getString("sex"));
+                annonce.setAge(resultSet.getInt("age"));
+                annonce.setDate(resultSet.getDate("dateAnnonce"));
+                annonce.setDetails(resultSet.getString("details"));
+                annonce.setImage(resultSet.getString("image"));
+
+                annonces.add(annonce);
+            }
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return annonces;
     }
 }
