@@ -16,6 +16,18 @@
         <servlet-name>ControlleurPublier</servlet-name>
         <servlet-class>controleur.ControlleurPublier</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControlleurUtilisateur</servlet-name>
+        <servlet-class>controleur.ControlleurUtilisateur</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreerUtilisateur</servlet-name>
+        <servlet-class>controleur.CreerUtilisateur</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConnectUtilisateur</servlet-name>
+        <servlet-class>controleur.ConnectUtilisateur</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControleurCompteProfile</servlet-name>
         <url-pattern>/ControleurCompteProfile</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>ControlleurPublier</servlet-name>
         <url-pattern>/ControlleurPublier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlleurUtilisateur</servlet-name>
+        <url-pattern>/ControlleurUtilisateur</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreerUtilisateur</servlet-name>
+        <url-pattern>/CreerUtilisateur</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConnectUtilisateur</servlet-name>
+        <url-pattern>/ConnectUtilisateur</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

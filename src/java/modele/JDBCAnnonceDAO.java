@@ -23,7 +23,7 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
             if (connection == null) {
-                connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL", "scott", "scott");
+                connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL", "scott", "tiger");
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -37,7 +37,7 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
     public void insert(Annonce annonce) {
         try {
             PreparedStatement preparedStatement
-                    = connection.prepareStatement("INSERT INTO annonces (id, typeAnnonce, typeAnimal, sex, age, dateAnnonce, details, image) "
+                    = connection.prepareStatement("INSERT INTO annonces (annonceno, typeAnnonce, typeAnimal, sex, age, dateAnnonce, details, image) "
                             + "VALUES (seqAnnonces.nextval , ?, ?, ?, ?, ?, ?, ?)");
             preparedStatement.setString(1, annonce.getTypeAnnonce());
             preparedStatement.setString(2, annonce.getTypeAnimal());
@@ -62,12 +62,12 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
         List<Annonce> annonces = new LinkedList<Annonce>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Annonces ORDER BY id DESC");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Annonces ORDER BY dateAnnonce DESC");
 
             Annonce annonce = null;
             while (resultSet.next()) {
                 annonce = new Annonce();
-                annonce.setId(Integer.parseInt(resultSet.getString("id")));
+                annonce.setId(Integer.parseInt(resultSet.getString("annonceno")));
                 annonce.setTypeAnnonce(resultSet.getString("typeAnnonce"));
                 annonce.setTypeAnimal(resultSet.getString("typeAnimal"));
                 annonce.setSex(resultSet.getString("sex"));

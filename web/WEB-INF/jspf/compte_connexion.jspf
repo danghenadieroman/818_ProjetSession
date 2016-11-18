@@ -8,17 +8,19 @@
         <div class="col-md-8">
             <div class="h3"><fmt:message key="message.connexion"/></div>
             <div class="row">
+                <form action="ConnectUtilisateur" method="post">
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="usr"><fmt:message key="message.nomUtilisateur"/>:</label>
-                        <input type="text" class="form-control" id="usr">
+                        <input type="text" class="form-control" name="usr" id="usr">
                     </div>
                     <div class="form-group">
                         <label for="pwd"><fmt:message key="message.motDePasse"/>:</label>
-                        <input type="password" class="form-control" id="pwd1">
+                        <input type="password" class="form-control" name="pwd" id="pwd1">
                     </div>
                     <button type="submit" class="btn btn-default" ><fmt:message key="message.confirmation"/></button>
                 </div>
+                </form>
             </div>
         </div>
         <div class="col-md-2">
