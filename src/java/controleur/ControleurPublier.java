@@ -17,7 +17,7 @@ import modele.JDBCAnnonceDAO;
  *
  * @author Dan-Ghenadie Roman
  */
-public class ControlleurPublier extends HttpServlet {
+public class ControleurPublier extends HttpServlet {
 
     private static final String SAVE_DIR = "\\Temp";
 

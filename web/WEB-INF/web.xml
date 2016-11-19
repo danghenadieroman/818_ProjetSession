@@ -14,11 +14,11 @@
     </servlet>
     <servlet>
         <servlet-name>ControlleurPublier</servlet-name>
-        <servlet-class>controleur.ControlleurPublier</servlet-class>
+        <servlet-class>controleur.ControleurPublier</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControlleurAfficher</servlet-name>
-        <servlet-class>controleur.ControlleurAfficher</servlet-class>
+        <servlet-class>controleur.ControleurAfficher</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControleurChercher</servlet-name>
