@@ -39,7 +39,7 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
     public void insert(Annonce annonce) {
         try {
             PreparedStatement preparedStatement
-                    = connection.prepareStatement("INSERT INTO annonces (annonceno, typeAnnonce, typeAnimal, sex, age, dateAnnonce, details, image) "
+                    = connection.prepareStatement("INSERT INTO annonces (id, typeAnnonce, typeAnimal, sex, age, dateAnnonce, details, image) "
                             + "VALUES (seqAnnonces.nextval , ?, ?, ?, ?, ?, ?, ?)");
             preparedStatement.setString(1, annonce.getTypeAnnonce());
             preparedStatement.setString(2, annonce.getTypeAnimal());
