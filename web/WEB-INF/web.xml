@@ -40,6 +40,14 @@
         <servlet-name>ControleurChercherResultat</servlet-name>
         <servlet-class>controleur.ControleurChercherResultat</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControleurPanier</servlet-name>
+        <servlet-class>controleur.ControleurPanier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>controleur.ChangePassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControleurCompteProfile</servlet-name>
         <url-pattern>/ControleurCompteProfile</url-pattern>
@@ -55,10 +63,6 @@
     <servlet-mapping>
         <servlet-name>ControlleurPublier</servlet-name>
         <url-pattern>/ControlleurPublier</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ControlleurUtilisateur</servlet-name>
-        <url-pattern>/ControlleurUtilisateur</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreerUtilisateur</servlet-name>
@@ -79,6 +83,19 @@
     <servlet-mapping>
         <servlet-name>ControleurChercherResultat</servlet-name>
         <url-pattern>/ControleurChercherResultat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControleurPanier</servlet-name>
+        <url-pattern>/ControleurPanier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlleurUtilisateur</servlet-name>
+        <url-pattern>/ControlleurUtilisateur</url-pattern>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/ChangePassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

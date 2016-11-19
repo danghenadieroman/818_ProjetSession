@@ -98,6 +98,7 @@ public class UserInfo {
     private int userno;
     private String login;
     private String nom;
+    private String prenom;
     private String couriel;
     private String zipcode;
     private String telephone;
@@ -111,6 +112,31 @@ public class UserInfo {
         this.couriel = couriel;
         this.zipcode = zipcode;
         this.telephone = telephone;
+    }
+
+    public static UserInfo getUserInfo(UserLogin ul){
+        JDBCUtilisateurDAO dao = new JDBCUtilisateurDAO();
+        return dao.getUserInfo(ul);
+    }
+    
+    public void save(){
+        //TODO write changes to DB
+        JDBCUtilisateurDAO dao = new JDBCUtilisateurDAO();
+        dao.updateUserInfo(this);
+    }
+    
+    /**
+     * @return the prenom
+     */
+    public String getPrenom() {
+        return prenom;
+    }
+
+    /**
+     * @param prenom the prenom to set
+     */
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
     
     

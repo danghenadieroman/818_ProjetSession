@@ -68,7 +68,7 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
             Annonce annonce = null;
             while (resultSet.next()) {
                 annonce = new Annonce();
-                annonce.setId(Integer.parseInt(resultSet.getString("annonceno")));
+                annonce.setId(Integer.parseInt(resultSet.getString("id")));
                 annonce.setTypeAnnonce(resultSet.getString("typeAnnonce"));
                 annonce.setTypeAnimal(resultSet.getString("typeAnimal"));
                 annonce.setSex(resultSet.getString("sex"));
@@ -76,7 +76,6 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
                 annonce.setDate(resultSet.getDate("dateAnnonce"));
                 annonce.setDetails(resultSet.getString("details"));
                 annonce.setImage(resultSet.getString("image"));
-
                 annonces.add(annonce);
             }
             resultSet.close();

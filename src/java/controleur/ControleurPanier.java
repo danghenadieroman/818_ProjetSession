@@ -7,20 +7,16 @@ package controleur;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modele.JDBCUtilisateurDAO;
-import modele.UserLogin;
 
 /**
  *
- * @author Olena  Lopatyuk
+ * @author Olena Lopatyuk
  */
-public class CreerUtilisateur extends HttpServlet {
+public class ControleurPanier extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,25 +30,20 @@ public class CreerUtilisateur extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-  
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ControleurPanier</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ControleurPanier at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
-       protected void erreurMessage(String text,HttpServletResponse response)
-            throws ServletException, IOException {
-                       response.setContentType("text/html;charset=UTF-8");
-                try (PrintWriter out = response.getWriter()) {
-                    out.println("<!DOCTYPE html>");
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<title>Attention!</title>");            
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>"+text+"</h1>");
-                    out.println("</body>");
-                    out.println("</html>");
-                }
-        }
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -80,26 +71,6 @@ public class CreerUtilisateur extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        String url = "";
-        String login = request.getParameter("usr");
-        String pwd1 = request.getParameter("pwd1");
-        String pwd2 = request.getParameter("pwd2");
-        modele.JDBCUtilisateurDAO users = null ;
-        if(pwd1.equals(pwd2)){
-           users = new JDBCUtilisateurDAO();
-           if(users.getUserId(login) > 0){
-               this.erreurMessage("Il y existe l'utilisateur "+login+" .", response);
-            } else {
-               users.createUser(new UserLogin(-1, login, pwd1));
-              
-               url = "/compte_profile.jsp";
-               ServletContext sc = getServletContext();
-               RequestDispatcher rd = sc.getRequestDispatcher(url);
-               rd.forward(request, response);
-            }  
-        }else {
-            this.erreurMessage("Les mots de passe ne sont pas égals.", response);
-        }  
     }
 
     /**
@@ -112,6 +83,4 @@ public class CreerUtilisateur extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-
-    
 }

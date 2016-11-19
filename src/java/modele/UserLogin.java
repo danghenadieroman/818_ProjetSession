@@ -30,12 +30,6 @@ public class UserLogin {
 
     public UserLogin(){}
     
-    public UserLogin(String _login, String _pwd){
-        this.setLogin(_login);
-        this.setPassword(_pwd);
-        this.setUserno(0); 
-    }
-    
      public UserLogin(int _userno, String _login, String _pwd){
         this.setLogin(_login);
         this.setPassword(_pwd);
@@ -71,6 +65,9 @@ public class UserLogin {
         this.password = password;
     }
     
-    
+    public void save(){
+        JDBCUtilisateurDAO dao = new JDBCUtilisateurDAO();
+        dao.updatePassword(this);
+    }
     
 }
