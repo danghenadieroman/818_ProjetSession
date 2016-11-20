@@ -60,7 +60,9 @@
                             <hr>
                             <div class="form-group">
                                 <label><fmt:message key="message.image"/></label>
-                                <button type="submit" class="btn btn-default" name="image" value="images/gallery/cats/cat01.jpg"><fmt:message key="message.choisissezUnePhoto"/></button>
+                                <%-- author: Dan-Ghenadie Roman --%>
+                                <%-- <button type="submit" class="btn btn-default" name="image" value="images/gallery/cats/cat01.jpg"><fmt:message key="message.choisissezUnePhoto"/></button>--%>
+                                <input type="file" name="file" size="60" /><br />
                             </div>
                             <hr>
                             <div class="form-group">
@@ -68,6 +70,7 @@
                                 <textarea class="form-control" rows="5" name="details"></textarea>
                             </div>
                             <hr>
+                             <input type="hidden" name="publier" value="publier">
                             <button type="submit" name="submit" value="sauvegarder" class="btn btn-default"><fmt:message key="message.sauvegarder"/></button>
                         </div>
                     </form>

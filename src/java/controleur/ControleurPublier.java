@@ -1,7 +1,7 @@
 package controleur;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import modele.Annonce;
 import modele.JDBCAnnonceDAO;
 
@@ -16,7 +17,9 @@ import modele.JDBCAnnonceDAO;
  *
  * @author Dan-Ghenadie Roman
  */
-public class ControlleurPublier extends HttpServlet {
+public class ControleurPublier extends HttpServlet {
+
+    private static final String SAVE_DIR = "\\Temp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,6 +38,8 @@ public class ControlleurPublier extends HttpServlet {
         JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
         jdbcAnnonceDAO.getConnection();
 
+        System.out.println("request.getParameter(\"publier\")" + request.getParameter("publier"));
+        System.out.println("request.getParameter(\"submit\")" + request.getParameter("submit"));
         if (request.getParameter("submit") != null) {
 
             Annonce annonce = new Annonce();
@@ -65,6 +70,33 @@ public class ControlleurPublier extends HttpServlet {
 
         jdbcAnnonceDAO.closeConnection();
         dispatch(destination, request, response);
+    }
+
+    protected void insererImage(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // gets absolute path of the web application(chemin physique)
+        String appPath = request.getServletContext().getRealPath("");
+        // constructs path of the directory to save uploaded file
+        System.out.println("Chem=" + appPath);
+        //on construit le chemin physique avec le nom du répertoire
+//        String savePath = appPath + File.separator + SAVE_DIR;
+//        String savePath = appPath + SAVE_DIR;
+
+        String savePath="c:\\Temp\\";
+        System.out.println("appPath + File.separator + SAVE_DIR= " + savePath);
+        // creates the save directory if it does not exists
+
+        //ici on sauvegarde les différentes parties du fichier
+//        File fileSaveDir = new File(savePath);
+//        if (!fileSaveDir.exists()) {
+//            fileSaveDir.mkdir();
+//        }
+        for (Part part : request.getParts()) {
+            String fileName = extractFileName(part);
+            part.write(savePath + File.separator + fileName);
+        }
+
     }
 
     protected void dispatch(String destination, HttpServletRequest request, HttpServletResponse response)
@@ -114,5 +146,16 @@ public class ControlleurPublier extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
 
 }

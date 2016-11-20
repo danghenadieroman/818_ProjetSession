@@ -31,15 +31,12 @@ public class ControleurLangue extends HttpServlet {
         HttpSession session = request.getSession();
 
         String langue = request.getParameter("langue");
-        System.out.println("langue: " + langue);
 
         if (request.getParameter("langue").equals("anglais")) {
             session.setAttribute("langue", "en_US");
         } else {
             session.setAttribute("langue", "fr_CA");
         }
-
-        System.out.println("sessionScope Langue: " + session.getAttribute("langue"));
 
         dispatch(destination, request, response);
 
