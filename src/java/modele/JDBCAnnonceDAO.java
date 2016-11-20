@@ -63,7 +63,7 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
         List<Annonce> annonces = new LinkedList<Annonce>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Annonces ORDER BY id DESC");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Annonces ORDER BY dateAnnonce DESC");
 
             Annonce annonce = null;
             while (resultSet.next()) {
@@ -76,7 +76,6 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
                 annonce.setDate(resultSet.getDate("dateAnnonce"));
                 annonce.setDetails(resultSet.getString("details"));
                 annonce.setImage(resultSet.getString("image"));
-
                 annonces.add(annonce);
             }
             resultSet.close();

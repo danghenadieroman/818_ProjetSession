@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="compte_profile.jsp">
+                            <a href="ControlleurUtilisateur">
                                 <fmt:message key="message.monProfile"/>
                             </a>
                         </li>                                                

@@ -17,6 +17,18 @@
         <servlet-class>controleur.ControleurPublier</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ControlleurUtilisateur</servlet-name>
+        <servlet-class>controleur.ControlleurUtilisateur</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreerUtilisateur</servlet-name>
+        <servlet-class>controleur.CreerUtilisateur</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConnectUtilisateur</servlet-name>
+        <servlet-class>controleur.ConnectUtilisateur</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ControlleurAfficher</servlet-name>
         <servlet-class>controleur.ControleurAfficher</servlet-class>
     </servlet>
@@ -31,6 +43,14 @@
     <servlet>
         <servlet-name>ControleurUploadFile</servlet-name>
         <servlet-class>controleur.ControleurUploadFile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControleurPanier</servlet-name>
+        <servlet-class>controleur.ControleurPanier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>controleur.ChangePassword</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ControleurCompteProfile</servlet-name>
@@ -49,6 +69,14 @@
         <url-pattern>/ControlleurPublier</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>CreerUtilisateur</servlet-name>
+        <url-pattern>/CreerUtilisateur</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConnectUtilisateur</servlet-name>
+        <url-pattern>/ConnectUtilisateur</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ControlleurAfficher</servlet-name>
         <url-pattern>/ControlleurAfficher</url-pattern>
     </servlet-mapping>
@@ -59,6 +87,19 @@
     <servlet-mapping>
         <servlet-name>ControleurChercherResultat</servlet-name>
         <url-pattern>/ControleurChercherResultat</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControleurPanier</servlet-name>
+        <url-pattern>/ControleurPanier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlleurUtilisateur</servlet-name>
+        <url-pattern>/ControlleurUtilisateur</url-pattern>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/ChangePassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ControleurUploadFile</servlet-name>
