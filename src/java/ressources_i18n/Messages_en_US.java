@@ -66,7 +66,9 @@ public class Messages_en_US extends ListResourceBundle {
         {"message.prenom", "Surname"},
         {"message.couriel", "E-mail"},
         {"message.codePostale", "Postal code"},
-        {"message.telephone", "Phone"}
+        {"message.telephone", "Phone"},
+        {"message.motDePasseChanger", "Change password"},
+        {"message.telechargerPhoto", "Upload the photo"}
     };
 
 }

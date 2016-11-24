@@ -65,7 +65,9 @@ public class Messages_fr_CA extends ListResourceBundle {
         {"message.prenom", "Prenom"},
         {"message.couriel", "Couriel"},
         {"message.codePostale", "Code postale"},
-        {"message.telephone", "Téléphone"}
+        {"message.telephone", "Téléphone"},
+        {"message.motDePasseChanger", "Changer mot de passe"},
+        {"message.telechargerPhoto", "Télécharger la photo"}
     };
 
 }
