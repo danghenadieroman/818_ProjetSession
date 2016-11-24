@@ -24,7 +24,7 @@ public class JDBCUtilisateurDAO {
             Class.forName("oracle.jdbc.OracleDriver");
             if (connection == null) {
                 //connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL", "scott", "tiger");
-                connection = DriverManager.getConnection("jdbc:oracle:thin:@oracleadudb1.bdeb.qc.ca:1521:GDNA10", "UG200E19", "U927fc");
+                connection = DriverManager.getConnection(DBConnectionString.getUrl(), DBConnectionString.getUser(), DBConnectionString.getPassword());
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

@@ -68,7 +68,8 @@ public class Messages_en_US extends ListResourceBundle {
         {"message.codePostale", "Postal code"},
         {"message.telephone", "Phone"},
         {"message.motDePasseChanger", "Change password"},
-        {"message.telechargerPhoto", "Upload the photo"}
+        {"message.telechargerPhoto", "Upload the photo"},
+        {"message.supprimerDePanier","Remove from cart"}
     };
 
 }

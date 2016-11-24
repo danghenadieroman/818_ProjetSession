@@ -24,8 +24,8 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
             Class.forName("oracle.jdbc.OracleDriver");
             if (connection == null) {
 //                connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL", "scott", "scott");
-                connection = DriverManager.getConnection("jdbc:oracle:thin:@oracleadudb1.bdeb.qc.ca:1521:GDNA10", "UG200E19", "U927fc");
-
+//                connection = DriverManager.getConnection("jdbc:oracle:thin:@oracleadudb1.bdeb.qc.ca:1521:GDNA10", "UG200E19", "U927fc");
+                connection = DriverManager.getConnection(DBConnectionString.getUrl(), DBConnectionString.getUser(), DBConnectionString.getPassword());
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -57,13 +57,15 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
 
     }
 
-    @Override
-    public List<Annonce> select() {
-
+    public List<Annonce> selectByID(String id) {
         List<Annonce> annonces = new LinkedList<Annonce>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Annonces ORDER BY dateAnnonce DESC");
+            String query = "SELECT * FROM Annonces ORDER BY dateAnnonce DESC";
+            if(!id.isEmpty()){
+                 query = "SELECT * FROM Annonces where id="+ id +" ORDER BY dateAnnonce DESC";
+            }
+            ResultSet resultSet = statement.executeQuery(query);
 
             Annonce annonce = null;
             while (resultSet.next()) {
@@ -86,6 +88,37 @@ public class JDBCAnnonceDAO implements AnnonceDAO {
         }
         System.out.println(annonces);
         return annonces;
+    }
+
+    @Override
+    public List<Annonce> select() {
+        return selectByID("");
+//        List<Annonce> annonces = new LinkedList<Annonce>();
+//        try {
+//            Statement statement = connection.createStatement();
+//            ResultSet resultSet = statement.executeQuery("SELECT * FROM Annonces ORDER BY dateAnnonce DESC");
+//
+//            Annonce annonce = null;
+//            while (resultSet.next()) {
+//                annonce = new Annonce();
+//                annonce.setId(Integer.parseInt(resultSet.getString("id")));
+//                annonce.setTypeAnnonce(resultSet.getString("typeAnnonce"));
+//                annonce.setTypeAnimal(resultSet.getString("typeAnimal"));
+//                annonce.setSex(resultSet.getString("sex"));
+//                annonce.setAge(resultSet.getInt("age"));
+//                annonce.setDate(resultSet.getDate("dateAnnonce"));
+//                annonce.setDetails(resultSet.getString("details"));
+//                annonce.setImage(resultSet.getString("image"));
+//                annonces.add(annonce);
+//            }
+//            resultSet.close();
+//            statement.close();
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(annonces);
+//        return annonces;
     }
 
     public void closeConnection() {
