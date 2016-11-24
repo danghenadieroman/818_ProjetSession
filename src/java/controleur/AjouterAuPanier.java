@@ -5,28 +5,23 @@
  */
 package controleur;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
+import modele.Annonce;
+import modele.JDBCAnnonceDAO;
 
 /**
  *
- * @author Myasus
+ * @author Olena Lopatyuk
  */
-@WebServlet(name = "UploadPhoto", urlPatterns = {"/UploadPhoto"})
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, // // 10MB
-        maxFileSize = 1024 * 1024 * 10, // 10MB
-        maxRequestSize = 1024 * 1024 * 10)	// // 10MB
-public class UploadPhoto extends HttpServlet {
-
-    private static final String SAVE_DIR = "Sauvegardes";
+public class AjouterAuPanier extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,7 +34,6 @@ public class UploadPhoto extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -70,47 +64,21 @@ public class UploadPhoto extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-        String appPath = request.getServletContext().getRealPath("");
-        System.out.println("Chem=" + appPath);
-        //on construit le chemin physique avec le nom du répertoire
-        String savePath = appPath + File.separator + SAVE_DIR;
-        //String savePath="c:\\temp\\";
-        File fileSaveDir = new File(savePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
+        HttpSession session = request.getSession();
+        ArrayList<Annonce> panierList = (ArrayList<Annonce>) session.getAttribute("panier");
+        if (panierList == null) {
+            panierList = new ArrayList<Annonce>();
+            session.setAttribute("panier", panierList);
         }
-        int i = 0;
-        for (Part part : request.getParts()) {
-            if (i > 0) {
-                break; //seuement 1 photo
-            }
-            String fileName = extractFileName(part);
-
-            //part.write(savePath + File.separator + fileName);
-            part.write(File.separator + fileName);
-            i++;
-        }
-
-        redirect("/ControlleurUtilisateur", response);
-
-    }
-
-    private void redirect(
-            String dest, HttpServletResponse response
-    ) throws IOException {
-        String urlWithSessionID = response.encodeRedirectURL(dest);
-        response.sendRedirect(urlWithSessionID);
-    }
-
-    private String extractFileName(Part part) {
-        String contentDisp = part.getHeader("content-disposition");
-        String[] items = contentDisp.split(";");
-        for (String s : items) {
-            if (s.trim().startsWith("filename")) {
-                return s.substring(s.lastIndexOf(File.separatorChar) + 1, s.length() - 1);
-            }
-        }
-        return "";
+        
+         JDBCAnnonceDAO jdbcAnnonceDAO = new JDBCAnnonceDAO();
+        jdbcAnnonceDAO.getConnection();
+        String id =  request.getParameter("id");
+        List<Annonce> annonces = jdbcAnnonceDAO.selectByID( id);
+        jdbcAnnonceDAO.closeConnection();
+        
+        if(!panierList.contains(annonces.get(0))) panierList.add(annonces.get(0));
+        redirect("ControleurIndex", response);
     }
 
     /**
@@ -123,4 +91,10 @@ public class UploadPhoto extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private void redirect(
+            String dest, HttpServletResponse response
+    ) throws IOException {
+        String urlWithSessionID = response.encodeRedirectURL(dest);
+        response.sendRedirect(urlWithSessionID);
+    }
 }

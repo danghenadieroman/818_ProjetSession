@@ -79,7 +79,7 @@
                     </c:otherwise>
                 </c:choose>
             </form>
-            <form class="navbar-form navbar-right" role="search" action="ControleurIndex">
+            <form class="navbar-form navbar-right" role="search" action="ControleurPanier">
                 <button type="submit" class="btn btn-default" name="panier" value="entete">
                     <span class="glyphicon glyphicon-shopping-cart"></span> <fmt:message key="message.panier"/>
                 </button>

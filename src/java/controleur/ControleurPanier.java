@@ -7,10 +7,14 @@ package controleur;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modele.Annonce;
 
 /**
  *
@@ -29,19 +33,8 @@ public class ControleurPanier extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControleurPanier</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControleurPanier at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -57,6 +50,15 @@ public class ControleurPanier extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        HttpSession session = request.getSession();
+        ArrayList<Annonce> panier = (ArrayList<Annonce>) session.getAttribute("panier");
+        if (panier != null) {
+            request.setAttribute("panier", panier);
+        } else {
+            request.setAttribute("panier", null);
+        }        
+        forward("panier.jsp", request, response);
     }
 
     /**
@@ -71,6 +73,22 @@ public class ControleurPanier extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        HttpSession session = request.getSession();
+        ArrayList<Annonce> panier = (ArrayList<Annonce>) session.getAttribute("panier");
+        String action = request.getParameter("action");
+        String id  = request.getParameter("id");
+        
+        if(action.equals("remove")) {
+            panier.removeIf(item -> String.valueOf(item.getId()).equals(id) );
+        }
+        
+        if (panier != null) {         
+            request.setAttribute("panier", panier);
+        } else {
+            request.setAttribute("panier", null);
+        }
+        
+        forward("panier.jsp", request, response);
     }
 
     /**
@@ -83,4 +101,19 @@ public class ControleurPanier extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    protected void forward(String destination, HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        if (destination != null) {
+            RequestDispatcher rd = request.getRequestDispatcher(destination);
+            rd.forward(request, response);
+        }
+    }
+
+    private void redirect(
+            String dest, HttpServletResponse response
+    ) throws IOException {
+        String urlWithSessionID = response.encodeRedirectURL(dest);
+        response.sendRedirect(urlWithSessionID);
+    }
 }
