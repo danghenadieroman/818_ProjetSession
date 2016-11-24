@@ -51,7 +51,7 @@ public class ConnectUtilisateur extends HttpServlet {
             if(session.getAttribute("forward_url")!=null){
                 dest = (String) session.getAttribute("forward_url");
             } else {
-                dest = "/default.jsp";
+                dest = "default.jsp";
             }
             
 //             RequestDispatcher rd = getServletContext().getRequestDispatcher(dest);
