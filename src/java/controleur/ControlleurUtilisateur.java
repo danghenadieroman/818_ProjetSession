@@ -77,8 +77,12 @@ public class ControlleurUtilisateur extends HttpServlet {
         String attr = "";
         String val = "";
         Enumeration<String> attributes = request.getParameterNames();
-        UserInfo profile = new UserInfo();
         UserLogin uLogin = (UserLogin) session.getAttribute("info");
+        UserInfo profile = (UserInfo) session.getAttribute("profile");
+         if(profile == null) {
+             profile = new UserInfo();
+             session.setAttribute("profile", profile);
+         }
         while (attributes.hasMoreElements()) {
             attr = attributes.nextElement();
             val = request.getParameter(attr);

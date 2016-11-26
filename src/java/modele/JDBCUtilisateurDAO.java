@@ -74,6 +74,7 @@ public class JDBCUtilisateurDAO {
                 uInfo.setZipcode(resultSet.getString("zipcode"));
                 uInfo.setCouriel(resultSet.getString("couriel"));
                 uInfo.setTelephone(resultSet.getString("telephone"));
+                uInfo.setPhoto("photo");
             }
 
             resultSet.close();
@@ -90,7 +91,7 @@ public class JDBCUtilisateurDAO {
         try {
             PreparedStatement preparedStatement
                     = conn.prepareStatement("UPDATE userinfo SET "
-                            + " nom = ? , prenom = ? , zipcode = ? , couriel = ? , telephone= ?"
+                            + " nom = ? , prenom = ? , zipcode = ? , couriel = ? , telephone= ? , photo=?"
                             + "where userno = ?"
                     );
             preparedStatement.setString(1, ui.getNom());
@@ -98,7 +99,8 @@ public class JDBCUtilisateurDAO {
             preparedStatement.setString(3, ui.getZipcode());
             preparedStatement.setString(4, ui.getCouriel());
             preparedStatement.setString(5, ui.getTelephone());
-            preparedStatement.setString(6, String.valueOf(ui.getUserno()));
+            preparedStatement.setString(6, ui.getPhoto());
+            preparedStatement.setString(7, String.valueOf(ui.getUserno()));
 
             preparedStatement.executeUpdate();
             preparedStatement.close();

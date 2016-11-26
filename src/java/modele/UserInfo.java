@@ -102,6 +102,7 @@ public class UserInfo {
     private String couriel;
     private String zipcode;
     private String telephone;
+    private String photo = "";
     
     public UserInfo(){}
     
@@ -137,6 +138,20 @@ public class UserInfo {
      */
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    /**
+     * @return the photo
+     */
+    public String getPhoto() {
+        return photo;
+    }
+
+    /**
+     * @param photo the photo to set
+     */
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
     
     
