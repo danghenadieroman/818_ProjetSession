@@ -31,7 +31,7 @@ import modele.UserLogin;
         maxRequestSize = 1024 * 1024 * 10)	// // 10MB
 public class UploadPhoto extends HttpServlet {
 
-    private static final String SAVE_DIR = "Profile";
+    public static final String SAVE_DIR = "profile";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -80,7 +80,9 @@ public class UploadPhoto extends HttpServlet {
         String fname = "";
         String fileName = "";
         fname = user.getLogin();
-        String savePath= request.getServletContext().getInitParameter("server.Sauvegardes") + SAVE_DIR;
+        
+        String appPath = request.getServletContext().getRealPath("/images");
+        String savePath= appPath+ File.separator + SAVE_DIR;
         File fileSaveDir = new File(savePath);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
@@ -91,7 +93,7 @@ public class UploadPhoto extends HttpServlet {
                 break; //seuement 1 photo
             }
             String s = extractFileName(part);
-            String ext = s.substring(s.lastIndexOf('.') , s.length());
+            String ext =  s.substring(s.lastIndexOf('.') , s.length()).toLowerCase();
             fileName =   fname +  ext;
             File file = new File(savePath, fileName);
             try  {
@@ -123,7 +125,7 @@ public class UploadPhoto extends HttpServlet {
         String[] items = contentDisp.split(";");
         for (String s : items) {
             if (s.trim().startsWith("filename")) {
-                return s.substring(s.indexOf("\"") + 1, s.length() - 1);
+                return s.substring(s.indexOf(File.separator) + 1, s.length() - 1);
             }
         }
         return "";

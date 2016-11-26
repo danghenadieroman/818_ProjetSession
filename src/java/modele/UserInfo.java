@@ -102,7 +102,7 @@ public class UserInfo {
     private String couriel;
     private String zipcode;
     private String telephone;
-    private String photo = "";
+    private String photo;
     
     public UserInfo(){}
     

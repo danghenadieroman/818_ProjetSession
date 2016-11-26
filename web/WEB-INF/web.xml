@@ -118,11 +118,6 @@
             30
         </session-timeout>
     </session-config>
-    <context-param>
-        <description>File upload location</description>
-        <param-name>server.Sauvegardes</param-name>
-        <param-value>C:\Temp\Sauvegardes\</param-value>
-    </context-param>
     <welcome-file-list>
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>

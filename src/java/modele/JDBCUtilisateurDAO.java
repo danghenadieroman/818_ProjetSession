@@ -66,19 +66,21 @@ public class JDBCUtilisateurDAO {
             statement.setString(1, String.valueOf(uLogin.getUserno()));
             resultSet = statement.executeQuery();
             uInfo = new UserInfo();
+            uInfo.setUserno(uLogin.getUserno());
+            uInfo.setLogin(uLogin.getLogin());
+            int i = 0;
             while (resultSet.next()) {
-                uInfo.setUserno(uLogin.getUserno());
-                uInfo.setLogin(uLogin.getLogin());
                 uInfo.setNom(resultSet.getString("nom"));
                 uInfo.setPrenom(resultSet.getString("prenom"));
                 uInfo.setZipcode(resultSet.getString("zipcode"));
                 uInfo.setCouriel(resultSet.getString("couriel"));
                 uInfo.setTelephone(resultSet.getString("telephone"));
-                uInfo.setPhoto("photo");
+                uInfo.setPhoto(resultSet.getString("photo"));
+                i++;
             }
-
             resultSet.close();
             statement.close();
+            if(i==0) createUserInfo(uLogin);            
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -117,7 +119,7 @@ public class JDBCUtilisateurDAO {
         try {
             PreparedStatement preparedStatement
                     = conn.prepareStatement("UPDATE users SET "
-                            +" login = ? , pwd = ? "
+                            + " login = ? , pwd = ? "
                             + "where userno = ?"
                     );
             preparedStatement.setString(1, u.getLogin());
@@ -132,6 +134,7 @@ public class JDBCUtilisateurDAO {
         }
 
     }
+
     private void createUserInfo(UserLogin login) throws SQLException {
         int id = getUserId(login.getLogin());
         Connection conn = getConnection();

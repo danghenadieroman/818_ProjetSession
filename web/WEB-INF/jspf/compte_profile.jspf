@@ -45,6 +45,11 @@
             </div>
 <hr/>
            <div class="row">
+               <div class="col-sm-4 " >
+                            <a href="#">
+                                <img src="${requestScope['photoUrl']}" class="img-responsive img-thumbnail" alt="Photo"/>                               
+                            </a>
+                        </div>
                 <div class="col-md-12">
                     <form method="post" action="UploadPhoto" enctype="multipart/form-data">
                          <div class="form-group">
