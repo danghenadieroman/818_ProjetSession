@@ -93,7 +93,7 @@ public class JDBCUtilisateurDAO {
         try {
             PreparedStatement preparedStatement
                     = conn.prepareStatement("UPDATE userinfo SET "
-                            + " nom = ? , prenom = ? , zipcode = ? , couriel = ? , telephone= ? , photo=?"
+                            + " nom = ? , prenom = ? , zipcode = ? , couriel = ? , telephone= ? "
                             + "where userno = ?"
                     );
             preparedStatement.setString(1, ui.getNom());
@@ -101,8 +101,30 @@ public class JDBCUtilisateurDAO {
             preparedStatement.setString(3, ui.getZipcode());
             preparedStatement.setString(4, ui.getCouriel());
             preparedStatement.setString(5, ui.getTelephone());
-            preparedStatement.setString(6, ui.getPhoto());
-            preparedStatement.setString(7, String.valueOf(ui.getUserno()));
+            
+            preparedStatement.setString(6, String.valueOf(ui.getUserno()));
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    public void updateUserPhoto(UserInfo ui) {
+
+        Connection conn = getConnection();
+        try {
+            PreparedStatement preparedStatement
+                    = conn.prepareStatement("UPDATE userinfo SET "
+                            + " photo=?"
+                            + "where userno = ?"
+                    );
+            
+            preparedStatement.setString(1, ui.getPhoto());
+            preparedStatement.setString(2, String.valueOf(ui.getUserno()));
 
             preparedStatement.executeUpdate();
             preparedStatement.close();

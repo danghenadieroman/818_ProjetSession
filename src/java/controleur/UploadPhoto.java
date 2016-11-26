@@ -108,7 +108,7 @@ public class UploadPhoto extends HttpServlet {
         UserInfo ui =  (UserInfo)session.getAttribute("profile");
         if(ui == null) ui = UserInfo.getUserInfo(user);
         ui.setPhoto(fileName);
-        ui.save();
+        ui.savePhoto();
         redirect("profile", response);
 
     }

@@ -125,6 +125,13 @@ public class UserInfo {
         JDBCUtilisateurDAO dao = new JDBCUtilisateurDAO();
         dao.updateUserInfo(this);
     }
+
+    public void savePhoto(){
+        //TODO write changes to DB
+        JDBCUtilisateurDAO dao = new JDBCUtilisateurDAO();
+        dao.updateUserPhoto(this);
+    }
+
     
     /**
      * @return the prenom
