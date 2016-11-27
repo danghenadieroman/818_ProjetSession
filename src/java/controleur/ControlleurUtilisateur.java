@@ -45,20 +45,19 @@ public class ControlleurUtilisateur extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         HttpSession session = request.getSession();
-        
+
         UserLogin userLogin = (UserLogin) session.getAttribute("info");
-        if(userLogin!=null){
-       // modele.JDBCUtilisateurDAO dao = new JDBCUtilisateurDAO();
-        UserInfo profile = UserInfo.getUserInfo(userLogin);
-        request.setAttribute("profile", profile);
-         //   redirect("compte_profile.jsp", response);
-         forward("compte_profile.jsp", request, response);
+        if (userLogin != null) {
+            UserInfo profile = UserInfo.getUserInfo(userLogin);
+            request.setAttribute("profile", profile);
+            String photoPath = "images/profile/" + profile.getPhoto();
+            request.setAttribute("photoUrl", photoPath);
+            forward("compte_profile.jsp", request, response);
         } else {
             session.setAttribute("forward_url", "profile");
-            redirect("compte_connexion.jsp",   response);
-            //forward("compte_connexion.jsp", request,  response);
+            redirect("compte_connexion.jsp", response);
         }
-        
+
     }
 
     /**
@@ -77,8 +76,12 @@ public class ControlleurUtilisateur extends HttpServlet {
         String attr = "";
         String val = "";
         Enumeration<String> attributes = request.getParameterNames();
-        UserInfo profile = new UserInfo();
         UserLogin uLogin = (UserLogin) session.getAttribute("info");
+        UserInfo profile = (UserInfo) session.getAttribute("profile");
+        if (profile == null) {
+            profile = new UserInfo();
+            session.setAttribute("profile", profile);
+        }
         while (attributes.hasMoreElements()) {
             attr = attributes.nextElement();
             val = request.getParameter(attr);
@@ -98,23 +101,14 @@ public class ControlleurUtilisateur extends HttpServlet {
                 case "tel":
                     profile.setTelephone(val);
                     break;
-//                case "login":
-//                    uLogin.setLogin(val);
-//                    break;
-//                case "pwd":
-//                    if (request.getParameter("reppwd") != null
-//                            && request.getParameter("pwd").equals(request.getParameter("reppwd"))) {
-//                        uLogin.setPassword(val);
-//                    }
-//                    break;
-            }   
+            }
         }
         profile.setUserno(uLogin.getUserno());
         profile.setLogin(uLogin.getLogin());
         profile.save();
         redirect("profile", response);
     }
-    
+
     protected void forward(String destination, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -123,14 +117,14 @@ public class ControlleurUtilisateur extends HttpServlet {
             rd.forward(request, response);
         }
     }
-    
-      
-  private void redirect(
-    String  dest, HttpServletResponse response
-  ) throws IOException {
-    String urlWithSessionID = response.encodeRedirectURL(dest);
-    response.sendRedirect( urlWithSessionID );
-  }
+
+    private void redirect(
+            String dest, HttpServletResponse response
+    ) throws IOException {
+        String urlWithSessionID = response.encodeRedirectURL(dest);
+        response.sendRedirect(urlWithSessionID);
+    }
+
     /**
      * Returns a short description of the servlet.
      *

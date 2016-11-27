@@ -63,12 +63,13 @@ public class Messages_fr_CA extends ListResourceBundle {
         {"message.motDePasse", "Mot de passe"},
         {"message.nom", "Nom"},
         {"message.prenom", "Prenom"},
-        {"message.couriel", "Couriel"},
+        {"message.couriel", "Courriel"},
         {"message.codePostale", "Code postale"},
         {"message.telephone", "Téléphone"},
         {"message.motDePasseChanger", "Changer mot de passe"},
         {"message.telechargerPhoto", "Télécharger la photo"},
-        {"message.supprimerDePanier","Supprimer de panier"}
+        {"message.supprimerDePanier","Supprimer du panier"},
+        {"message.passwordsDiff", "Les mots sont différents!"}
     };
 
 }

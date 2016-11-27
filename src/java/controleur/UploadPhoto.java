@@ -7,14 +7,19 @@ package controleur;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import modele.UserInfo;
+import modele.UserLogin;
 
 /**
  *
@@ -26,7 +31,7 @@ import javax.servlet.http.Part;
         maxRequestSize = 1024 * 1024 * 10)	// // 10MB
 public class UploadPhoto extends HttpServlet {
 
-    private static final String SAVE_DIR = "Sauvegardes";
+    public static final String SAVE_DIR = "profile";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -69,12 +74,15 @@ public class UploadPhoto extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
-        String appPath = request.getServletContext().getRealPath("");
-        System.out.println("Chem=" + appPath);
-        //on construit le chemin physique avec le nom du répertoire
-        String savePath = appPath + File.separator + SAVE_DIR;
-        //String savePath="c:\\temp\\";
+        HttpSession session = request.getSession();
+        UserLogin user = (UserLogin)session.getAttribute("info");
+        if(user == null) redirect("compte_connexion.jsp",   response);
+        String fname = "";
+        String fileName = "";
+        fname = user.getLogin();
+        
+        String appPath = request.getServletContext().getRealPath("/images");
+        String savePath= appPath+ File.separator + SAVE_DIR;
         File fileSaveDir = new File(savePath);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
@@ -84,14 +92,24 @@ public class UploadPhoto extends HttpServlet {
             if (i > 0) {
                 break; //seuement 1 photo
             }
-            String fileName = extractFileName(part);
-
-            //part.write(savePath + File.separator + fileName);
-            part.write(File.separator + fileName);
+            String s = extractFileName(part);
+            String ext =  s.substring(s.lastIndexOf('.') , s.length()).toLowerCase();
+            fileName =   fname +  ext;
+            File file = new File(savePath, fileName);
+            try  {
+                 InputStream input = part.getInputStream();
+                 Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            }
+            catch(Exception ex){
+                 ex.getMessage();
+            }
             i++;
         }
-
-        redirect("/ControlleurUtilisateur", response);
+        UserInfo ui =  (UserInfo)session.getAttribute("profile");
+        if(ui == null) ui = UserInfo.getUserInfo(user);
+        ui.setPhoto(fileName);
+        ui.savePhoto();
+        redirect("profile", response);
 
     }
 
@@ -107,7 +125,7 @@ public class UploadPhoto extends HttpServlet {
         String[] items = contentDisp.split(";");
         for (String s : items) {
             if (s.trim().startsWith("filename")) {
-                return s.substring(s.lastIndexOf(File.separatorChar) + 1, s.length() - 1);
+                return s.substring(s.indexOf(File.separator) + 1, s.length() - 1);
             }
         }
         return "";

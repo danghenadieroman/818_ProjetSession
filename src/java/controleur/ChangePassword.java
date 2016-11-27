@@ -36,8 +36,8 @@ public class ChangePassword extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         UserLogin uLogin = (UserLogin) session.getAttribute("info");
-        if(request.getParameter("pwd").equals(request.getParameter("reppwd"))){
-            uLogin.setPassword(request.getParameter("pwd"));
+        if(request.getParameter("pwd1").equals(request.getParameter("pwd2"))){
+            uLogin.setPassword(request.getParameter("pwd1"));
             uLogin.save();
         }
             String urlWithSessionID = response.encodeRedirectURL("profile");
