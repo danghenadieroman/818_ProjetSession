@@ -1,4 +1,5 @@
 <%-- author: Dan-Ghenadie Roman --%>
+<%-- modified by: Olena Lopatyuk --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -41,6 +42,7 @@
             </div>
             <!-- 3 row: Contenue de bas de la page  -->
             <%@include file="WEB-INF/jspf/bas.jspf" %>
+            <script src="js/validator.js"></script>
         </div><!-- Fin Container principale -->
     </body>
 </html>

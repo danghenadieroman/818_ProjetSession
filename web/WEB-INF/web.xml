@@ -25,8 +25,8 @@
         <servlet-class>controleur.CreerUtilisateur</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ConnectUtilisateur</servlet-name>
-        <servlet-class>controleur.ConnectUtilisateur</servlet-class>
+        <servlet-name>ConnecterUtilisateur</servlet-name>
+        <servlet-class>controleur.ConnecterUtilisateur</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControlleurAfficher</servlet-name>
@@ -77,8 +77,8 @@
         <url-pattern>/CreerUtilisateur</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ConnectUtilisateur</servlet-name>
-        <url-pattern>/ConnectUtilisateur</url-pattern>
+        <servlet-name>ConnecterUtilisateur</servlet-name>
+        <url-pattern>/ConnecterUtilisateur</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ControlleurAfficher</servlet-name>
