@@ -5,6 +5,8 @@ CREATE TABLE users
     login  VARCHAR2(50),
     pwd    VARCHAR2(50)
   );
+
+  
 CREATE sequence users_seq start with 1 increment BY 1 nocycle;
   CREATE TABLE userinfo
     (
@@ -17,3 +19,9 @@ CREATE sequence users_seq start with 1 increment BY 1 nocycle;
       photo VARCHAR2(50)
     );
  
+
+ create table userannonces (
+   userno NUMBER(4) REFERENCES users(userno),
+   id NUMBER(38) REFERENCES annonces(id),
+   constraint PK_UA primary key (userno, id)
+ );

@@ -73,13 +73,14 @@
                         </div>  
                         <div class="form-group">
                             <label for="pwd"><fmt:message key="message.motDePasse"/></label>
-                            <input type="password" class="form-control" name="pwd" id="pwd">
+                            <input type="password" class="form-control" name="pwd1" id="pwd1">
                         </div>
                         <div class="form-group">
                             <label for="reppwd"><fmt:message key="message.motDePasse"/> <fmt:message key="message.confirmation"/></label>
-                            <input type="password" class="form-control" name="reppwd" id="reppwd">
+                            <input type="password" class="form-control" name="pwd2" id="pwd2">
                         </div>
-                        <button type="submit" class="btn btn-default">
+                        <input type="hidden" id="errmessage" value="<fmt:message key='message.passwordsDiff'/>">
+                        <button type="submit" class="btn btn-default" id="btnSubmit">
                             <!--<fmt:message key="message.sauvegarder"/>-->
                             <fmt:message key="message.motDePasseChanger"/>
                         </button>

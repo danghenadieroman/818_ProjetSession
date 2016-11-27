@@ -8,7 +8,7 @@
         <div class="col-md-8">
             <div class="h3"><fmt:message key="message.connexion"/></div>
             <div class="row">
-                <form action="ConnectUtilisateur" method="post">
+                <form action="ConnecterUtilisateur" method="post">
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="usr"><fmt:message key="message.nomUtilisateur"/>:</label>

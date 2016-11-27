@@ -69,6 +69,7 @@ public class Messages extends ListResourceBundle {
         {"message.telephone", "Téléphone"},
         {"message.motDePasseChanger", "Changer mot de passe"},
         {"message.telechargerPhoto", "Télécharger la photo"},
-        {"message.supprimerDePanier","Supprimer du panier"}
+        {"message.supprimerDePanier", "Supprimer du panier"},
+        {"message.passwordsDiff", "Les mots de pass sont différents!"}
     };
 }

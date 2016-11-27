@@ -37,6 +37,7 @@
             </div>
             <!-- 3 row: Contenue de bas de la page  -->
             <%@include file="WEB-INF/jspf/bas.jspf" %>
+            <script src="js/validator.js"></script>
         </div><!-- Fin Container principale -->
     </body>
 </html>
